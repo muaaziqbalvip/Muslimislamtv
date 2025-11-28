@@ -1,10 +1,15 @@
 #EXTM3U
-#EXTINF:-1 tvg-id="Pegam.pk@sd" tvg-logo="https://i.ibb.co/gMhwDPS8/Pegamtv.jpg", Pega
+#EXTINF:-1 tvg-id="Pegam.pk@sd" tvg-logo="https://i.ibb.co/gMhwDPS8/Pegamtv.jpg", Pegam tv
 YOUTUBE:Ww5nLsKGCUU
 #EXTINF:-1 tvg-id="PeaceTVUrdu.ae@SD" tvg-logo="https://i.postimg.cc/cLCfzgqB/peacetvurdu.png" group-title="Religious",Peace TV Urdu (1080p)
 https://dzkyvlfyge.erbvr.com/PeaceTvUrdu/index.m3u8
 #EXTINF:-1 tvg-id="Arynews.pk@sd" tvg-logo="https://i.ibb.co/S4fN9821/Arynews.webp", Ary news
 YOUTUBE:RqUZ2Fv9l8w
+#EXTINF:-1 tvg-id="bolnews.pk@sd" tvg-logo="https://i.ibb.co/j9Zn5bHW/Bolnews.jpg", Bol news 24/7
+YOUTUBE:U60zQv23NjY
+#EXTINF:-1 tvg-id="24news.pk@sd" tvg-logo="https://i.ibb.co/vC1FzFtt/24news.jpg", 24 news
+YOUTUBE:l18WSuRMtHo
+
 #EXTINF:-1 tvg-id="92news.pk@sd" tvg-logo="https://i.imgur.com/gp1Ao4s.jpeg", 92 News
 YOUTUBE:8uh7YorHaa8
 #EXTINF:-1 tvg-id="geonews.pk@sd" tvg-logo="https://i.imgur.com/Op4EsaB.png", geo news
@@ -42,7 +47,7 @@ https://5dcabf026b188.streamlock.net/expressdigital/livestream/playlist.m3u8
 http://cdn9.live247stream.com/punjabitvcanada/tv/playlist.m3u8
 #EXTINF:-1 tvg-id="GawahiTV.pk@SD" tvg-logo="https://i.imgur.com/0W6zzHS.png" group-title="Religious",Gawahi TV SD
 https://livecdn.live247stream.com/gawahi/tv/playlist.m3u8
-#EXTINF:-1 tvg-id="harpelgeo.pk@SD" tvg-logo="https://i.postimg.cc/7ZmSsPJy/geokahani.png" group-title="Entertainment",harperl gio SD
+#EXTINF:-1 tvg-id="harpelgeo.pk@SD" tvg-logo="https://i.ibb.co/r9sKZ3K/Harpelgeo.jpg" group-title="Entertainment",harperl gio SD
 https://jk3lz82elw79-hls-live.5centscdn.com/harPalGeo/955ad3298db330b5ee880c2c9e6f23a0.sdp/playlist.m3u8
 #EXTINF:-1 tvg-id="GeoSuper.pk@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/en/5/5f/Geo_Super_logo.png" group-title="Sports",Geo Super SD
 http://116.90.120.149:8000/play/a021/index.m3u8
