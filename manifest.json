@@ -1,0 +1,20 @@
+{
+  "name": "Muslim Islam TV",
+  "short_name": "MITV",
+  "start_url": "home.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#87CEEB",
+  "icons": [
+    {
+      "src": "1.png",
+      "sizes": "500x500",
+      "type": "image/png"
+    },
+    {
+      "src": "2.png",
+      "sizes": "500x500",
+      "type": "image/png"
+    }
+  ]
+}
