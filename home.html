@@ -9,21 +9,13 @@
   <title>Muslim Islam TV</title>
   <style> html,body{overflow:hidden;height:100%;margin:0;font-family:Arial, Helvetica, sans-serif;background:#0f172a;color:#e6eef8; transition: background 0.5s, color 0.5s;}
     /* Force mobile-like container */
-    .wrap{max-width:1200px;width:100%;margin:12px auto;border-radius:8px;overflow:hidden;box-shadow:0 10px 30px rgba(2,6,23,.6);background:linear-gradient(180deg,#071024 0%,#071827 100%); position: relative; transition: background 0.5s;}
+    .wrap{max-width:px;width:100%;margin:12px auto;border-radius:8px;overflow:hidden;box-shadow:0 10px 30px rgba(2,6,23,.6);background:linear-gradient(180deg,#071024 0%,#071827 100%); position: relative; transition: background 0.5s;}
 
     /* Header */
     header{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:linear-gradient(90deg,#04213a,#072b4f);border-bottom:3px solid rgba(255,255,255,.03)}
     .brand{display:flex;align-items:center;gap:12px}
     .brand img{width:44px;height:44px;border-radius:8px;object-fit:cover}
-    
-    /* Title for Neon Effect */
-    .title{
-        font-size:24px; 
-        font-weight:800;
-        letter-spacing:0px;
-        display: flex; 
-        line-height: 1;
-    }
+    .title{font-size:18px;font-weight:800;letter-spacing:.4px}
     .title small{display:block;font-size:11px;font-weight:600;opacity:.8}
 
     /* Menu Button Style */
@@ -103,20 +95,11 @@
   font-size:18px;
 }
 
-/* 🌟 SPLASH IMAGE MOVEMENT CSS (ADDED) 🌟 */
-@keyframes splashImageZoom {
-    0% { transform: scale(1); opacity: 0.7; }
-    50% { transform: scale(1.1); opacity: 1; }
-    100% { transform: scale(1); opacity: 0.7; }
-}
-
 .splash img{
   width:120px;
   height:120px;
   border-radius:20px;
   margin-bottom:10px;
-  /* Apply the animation to the image */
-  animation: splashImageZoom 4s ease-in-out infinite;
 }
 
 .hidden{display:none;}
@@ -202,73 +185,16 @@
 body.tv-mode { filter: contrast(1.2) brightness(1.1) sepia(0.3); }
 body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: inset 0 0 50px rgba(0,0,0,0.8); }
 
-    /* Neon/Stylish Font Effect CSS */
-    #animatedTitle {
-        font-family: 'Arial Black', sans-serif; /* Stylish, bold font */
-        text-transform: uppercase;
-    }
-    .neon-char {
-        display: inline-block;
-        transition: 0.3s;
-        color: #fff; /* Main text color */
-        /* Dual-color glowing shadow */
-        text-shadow: 
-            0 0 5px #00eaff, /* Light Blue Glow */
-            0 0 10px #00eaff,
-            0 0 20px #ff00de, /* Pink secondary glow */
-            0 0 40px #ff00de; 
-        
-        /* Movement (Harkat) effect: Subtle pulsing */
-        animation: neonPulse 1.5s ease-in-out infinite alternate;
-        
-        /* Individual character spacing */
-        padding-right: 2px;
-    }
-    .neon-char.space {
-        text-shadow: none;
-        width: 10px; /* Space between words */
-        animation: none;
-    }
-
-    /* Delay for the moving effect (Harkat) */
-    #animatedTitle .neon-char:nth-child(2) { animation-delay: 0.05s; }
-    #animatedTitle .neon-char:nth-child(3) { animation-delay: 0.1s; }
-    #animatedTitle .neon-char:nth-child(4) { animation-delay: 0.15s; }
-    #animatedTitle .neon-char:nth-child(5) { animation-delay: 0.2s; }
-    #animatedTitle .neon-char:nth-child(6) { animation-delay: 0.25s; }
-    
-    /* 'I' in Islam starts a new animation cycle */
-    #animatedTitle .neon-char:nth-child(8) { animation-delay: 0.35s; }
-    #animatedTitle .neon-char:nth-child(9) { animation-delay: 0.4s; }
-    #animatedTitle .neon-char:nth-child(10) { animation-delay: 0.45s; }
-    #animatedTitle .neon-char:nth-child(11) { animation-delay: 0.5s; }
-    #animatedTitle .neon-char:nth-child(12) { animation-delay: 0.55s; }
-    
-    /* 'T' in TV starts a new animation cycle */
-    #animatedTitle .neon-char:nth-child(14) { animation-delay: 0.65s; }
-    #animatedTitle .neon-char:nth-child(15) { animation-delay: 0.7s; }
-
-    /* Keyframes for the animation/movement */
-    @keyframes neonPulse {
-        0% { 
-            /* Full glow at 0% */
-            text-shadow: 0 0 5px #00eaff, 0 0 10px #00eaff, 0 0 20px #ff00de, 0 0 40px #ff00de;
-            transform: scale(1.0); 
-        }
-        100% { 
-            /* Reduced glow and scale at 100% for subtle pulse */
-            text-shadow: 0 0 2px #00eaff, 0 0 4px #00eaff, 0 0 8px #ff00de, 0 0 16px #ff00de, 0 0 32px #ff00de; 
-            transform: scale(0.98); 
-        }
-    }
   </style>
 </head>
 <body>
   
+  <!-- SOUNDS -->
   <audio id="sound1"><source src="s1.mp3" type="audio/mpeg"></audio>
   <audio id="sound2"><source src="s3.mp3" type="audio/mpeg"></audio>
   <audio id="sound3"><source src="s2.mp3" type="audio/mpeg"></audio>
 
+  <!-- SPLASH SCREENS -->
   <div id="splash1" class="splash">
     <img src="3.png">
     <p>Loading ...</p>
@@ -284,6 +210,7 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
 
  <div class="wrap">
     
+    <!-- SIDE MENU (NEW) -->
     <div id="sideMenu">
         <div class="menu-header">
             <span class="menu-title">⚙️ Settings</span>
@@ -319,25 +246,12 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
       <div class="brand">
         <img src="3.png" alt="logo" />
         <div>
-          <div class="title" id="animatedTitle">
-            <span class="neon-char">M</span>
-            <span class="neon-char">u</span>
-            <span class="neon-char">s</span>
-            <span class="neon-char">l</span>
-            <span class="neon-char">i</span>
-            <span class="neon-char">m</span>
-            <span class="neon-char space">&nbsp;</span>
-            <span class="neon-char">I</span>
-            <span class="neon-char">s</span>
-            <span class="neon-char">l</span>
-            <span class="neon-char">a</span>
-            <span class="neon-char">m</span>
-            
-          </div>
+          <div class="title">Muslim Islam TV</div>
           <small id="subtitle" style="color:#9fb9d6">Live Streams & Playlists</small>
         </div>
       </div>
       
+      <!-- MENU BUTTON (NEW) -->
       <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
       <button id="installBtn" style="
@@ -346,6 +260,7 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
 
         <div class="status">
             <div class="stat-item" id="clock">--:--:--</div>
+            <!-- Battery removed to save space or kept hidden -->
             <div class="battery" style="display:none;">
               <div class="cell"><div class="level" id="battLevel" style="width:70%"></div></div>
               <div class="cap"></div>
@@ -551,6 +466,7 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
     }
   </script>
 
+  <!-- SPLASH & SOUND LOGIC -->
   <script>
   window.addEventListener("load", ()=>{
     // Splash sequence
@@ -573,6 +489,7 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
   });
   </script>
 
+  <!-- PWA INSTALL LOGIC -->
   <script>
   let deferredPrompt;
   const installBtn = document.getElementById("installBtn");
@@ -589,6 +506,7 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
   });
   </script>
 
+  <!-- SERVICE WORKER -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -598,6 +516,7 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
     }
   </script>
 
+  <!-- NEW FEATURE LOGIC: MENU, THEMES, LANGUAGES, & COUNTER FIX -->
   <script>
     // 1. MENU TOGGLE
     function toggleMenu() {
@@ -647,28 +566,26 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
         const choose = document.getElementById('chooseTitle');
         const search = document.getElementById('searchInput');
 
-        // NOTE: Commenting out title.innerText change to preserve the complex Neon Animation structure.
-        
         if(lang === 'ur') {
-            // title.innerText = "مسلم اسلام ٹی وی"; 
+            title.innerText = "مسلم اسلام ٹی وی";
             sub.innerText = "لائیو اسٹریمز اور پلے لسٹس";
             choose.innerText = "ملک منتخب کریں:";
             search.placeholder = "چینل تلاش کریں...";
             document.body.style.direction = "rtl";
         } else if(lang === 'ar') {
-            // title.innerText = "تلفزيون مسلم إسلام"; 
+            title.innerText = "تلفزيون مسلم إسلام";
             sub.innerText = "بث مباشر وقوائم التشغيل";
             choose.innerText = "اختر الدولة:";
             search.placeholder = "البحث عن القنوات...";
             document.body.style.direction = "rtl";
         } else if(lang === 'hi') {
-            // title.innerText = "मुस्लिम इस्लाम टीवी"; 
+            title.innerText = "मुस्लिम इस्लाम टीवी";
             sub.innerText = "लाइव स्ट्रीम और प्लेलिस्ट";
             choose.innerText = "देश चुनें:";
             search.placeholder = "चैनल खोजें...";
             document.body.style.direction = "ltr";
         } else {
-            // title.innerText = "Muslim Islam TV";
+            title.innerText = "Muslim Islam TV";
             sub.innerText = "Live Streams & Playlists";
             choose.innerText = "Choose the country:";
             search.placeholder = "Search channels...";
