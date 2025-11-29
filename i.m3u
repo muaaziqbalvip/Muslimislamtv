@@ -1,6 +1,8 @@
 #EXTM3U
 #EXTINF:-1 tvg-id="Pegam.pk@sd" tvg-logo="https://i.ibb.co/gMhwDPS8/Pegamtv.jpg", Pegam tv
 YOUTUBE:Ww5nLsKGCUU
+#EXTINF:-1 tvg-id="PeaceTVUrdu.ae@SD" tvg-logo="https://i.postimg.cc/cLCfzgqB/peacetvurdu.png" group-title="Religious",Peace TV Urdu (1080p)
+https://dzkyvlfyge.erbvr.com/PeaceTvUrdu/index.m3u8
 #EXTINF:-1 tvg-id="4TVNews.in@SD" tvg-logo="https://i.imgur.com/DSAaC2b.png" group-title="News",4TV News SD
 https://cdn-4.pishow.tv/live/1007/master.m3u8
 #EXTINF:-1 tvg-id="6TVTelugu.in@SD" tvg-logo="https://i.imgur.com/l3EcRnZ.png" group-title="News",6 TV Telugu SD

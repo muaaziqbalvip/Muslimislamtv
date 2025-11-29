@@ -1,6 +1,8 @@
 #EXTM3U
 #EXTINF:-1 tvg-id="Pegam.pk@sd" tvg-logo="https://i.ibb.co/gMhwDPS8/Pegamtv.jpg", Pegam tv
 YOUTUBE:Ww5nLsKGCUU
+#EXTINF:-1 tvg-id="PeaceTVUrdu.ae@SD" tvg-logo="https://i.postimg.cc/cLCfzgqB/peacetvurdu.png" group-title="Religious",Peace TV Urdu (1080p)
+https://dzkyvlfyge.erbvr.com/PeaceTvUrdu/index.m3u8
 #EXTINF:-1 tvg-id="247BoxTV.ir@SD" tvg-logo="https://i.imgur.com/t5AUthL.png" group-title="Entertainment",247 Box TV SD
 https://hls.247box.live/hls/stream.m3u8
 #EXTINF:-1 tvg-id="AbadanTV.ir@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/fa/3/39/Abadan_tv.png" group-title="General",Abadan TV SD

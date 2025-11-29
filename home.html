@@ -3,13 +3,15 @@
 <head>
     <link rel="icon" type="image/png" href="https://i.ibb.co/KxHGtqZ8/2.gif">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
   <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#000000">
   <title>Muslim Islam TV</title>
-  <style> 
-      html,body{height:100%;margin:0;font-family:Arial, Helvetica, sans-serif;background:#0f172a;color:#e6eef8; transition: background 0.5s, color 0.5s;}
-      
+  <style>
+    /* FIX: 'overflow:hidden' removed to enable page scrolling */
+    html,body{height:100%;margin:0;font-family:Arial, Helvetica, sans-serif;background:#0f172a;color:#e6eef8; transition: background 0.5s, color 0.5s;}
+    
     /* Force mobile-like container */
     .wrap{max-width:1200px;width:100%;margin:12px auto;border-radius:8px;overflow:hidden;box-shadow:0 10px 30px rgba(2,6,23,.6);background:linear-gradient(180deg,#071024 0%,#071827 100%); position: relative; transition: background 0.5s;}
 
@@ -78,9 +80,10 @@
       .wrap{margin-top:20px}
     }
     body{
-    background: url("https://i.ibb.co/q3KZ4MxZ/Uhdtv.jpg") no-repeat center center fixed;
-    background-size: cover;
+    /* Old background image ko hata diya gaya hai, taake video nazar aaye */
+    background: #0f172a; 
 }
+
 .wrap{
     background: url("") no-repeat center center;
     background-size: cover;
@@ -206,18 +209,18 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
 .audio-track-btn.active {
     background: #0ea5e9;
     border-color: #0ea5e9;
-/* Slideshow container (YouTube Player Size) */
+}
+
+/* --- START Slider Styles (Final Version with 80% width) --- */
 .slideshow-container {
-  max-width: 100%;
+  max-width: 100%; /* Width ko kam kar ke 80% karein */
   position: relative;
-  margin: auto;
+  margin: auto; 
   border-radius: 8px;
   overflow: hidden;
-  /* Box Shadow aur background yahan nahi dein ge, woh .wrap se aayenge */
-  
-  /* 16:9 Video Aspect Ratio Set karna */
+  /* 16:9 Video Aspect Ratio (Width: 80%, Height: 80% * 9/16 = 45%) */
   height: 0;
-  padding-bottom: 56.25%; 
+  padding-bottom: 55%; 
 }
 
 /* Hide the images by default */
@@ -253,11 +256,33 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
   from {opacity: .4} 
   to {opacity: 1}
 }
+/* --- END Slider Styles --- */
+/* --- Background Video Style --- */
+#bgVideo {
+    position: fixed; /* Screen par fix rakhega */
+    top: 50%;
+    left: 50%;
+    /* Video ko center mein laakar, size ko cover karega */
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    
+    /* Z-index: Video ko baqi content ke peeche (background) mein bheje ga */
+    z-index: -1; 
+    
+    /* Video ko halka karne ke liye (Optional, agar video bohot tez ya gehra ho) */
+    opacity: 0.5; 
+}
 
   </style>
 </head>
 <body>
-  
+  <video autoplay muted loop id="bgVideo">
+        <source src="icons/1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
   <audio id="sound1"><source src="s1.mp3" type="audio/mpeg"></audio>
   <audio id="sound2"><source src="s3.mp3" type="audio/mpeg"></audio>
   <audio id="sound3"><source src="s2.mp3" type="audio/mpeg"></audio>
@@ -334,42 +359,54 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
     
     
     <main>
-        <div class="wrap">
-  <div id="imageSlider" style="padding: 10px;">
-        <div class="slideshow-container">
+      <div class="wrap" id="sliderContainerBox"> 
+          
+          <div id="imageSlider" style="padding: 10px;">
+              <div class="slideshow-container">
+                  
+                  <div class="mySlides fade">
+                 <img src="icons/1.jpg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <img src="icons/2.jpeg" style="width:100%">
+        </div>
+       <div class="mySlides fade">
+            <img src="icons/2.jpg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <img src="icons/3.jpeg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <img src="icons/3.jpg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <img src="icons/4.jpg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <img src="icons/4.jpeg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <img src="icons/5.jpg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <img src="icons/5.jpeg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <img src="icons/6.jpg" style="width:100%"> </div>
             <div class="mySlides fade">
-                 <img src="https://i.ibb.co/zTd0frmQ/hqdefault.jpg" style="width:100%">
+            <img src="icons/7.jpg" style="width:100%"> </div>
+            <div class="mySlides fade">
+            <img src="icons/8.jpg" style="width:100%"> </div>
+            <div class="mySlides fade">
+            <img src="icons/9.peg" style="width:100%"> </div>
+            <div class="mySlides fade">
+            <img src="icons/1bp" style="width:100%"> </div>
+            <div class="mySlides fade">
+            <img src="icons/1.jpg" style="width:100%"> </div>
         </div>
-        <div class="mySlides fade">
-            <img src="https://i.ibb.co/hx41WHWb/sddefault.jpg" style="width:100%">
-        </div>
-        <div class="mySlides fade">
-            <img src="https://i.ibb.co/F4vF8nMP/images-5.jpg" style="width:100%">
-        </div>
-        <div class="mySlides fade">
-            <img src="https://i.ibb.co/wZ0rgCvk/images-3.jpg" style="width:100%">
-        </div>
-        <div class="mySlides fade">
-            <img src="https://i.ibb.co/PGggJkdP/images-8.jpg" style="width:100%">
-        </div>
-        <div class="mySlides fade">
-            <img src="https://i.ibb.co/LdLFv7SY/images-7.jpg" style="width:100%">
-        </div>
-        <div class="mySlides fade">
-            <img src="https://i.ibb.co/gZSkkQ9b/images-9.jpg" style="width:100%">
-        </div>
-        <div class="mySlides fade">
-            <img src="https://i.ibb.co/6cTdcJw9/images-4.jpg" style="width:100%">
-        </div>
-        <div class="mySlides fade">
-            <img src="https://i.ibb.co/8D12MRCg/images-2.jpg" style="width:100%">
-        </div>
-        <div class="mySlides fade">
-            <img src="https://i.ibb.co/6cTdcJw9/images-4.jpg" style="width:100%">
-        </div>
-        </div>
-</div>
-
+              </div>
+          </div>
+      </div>
       <div id="choose" class="choose-wrap">
         <div class="choose-title" id="chooseTitle">Choose the country:</div>
         <div class="countries">
@@ -377,8 +414,13 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
           <div class="country" data-file="i.m3u"><strong>🇮🇳India</strong></div>
           <div class="country" data-file="a.m3u"><strong>🇦🇫Afghanistan</strong></div>
           <div class="country" data-file="ir.m3u"><strong>🇮🇷Iran</strong></div>
-          <div class="country" data-file="https://raw.githubusercontent.com/InsolenceWillow/insolencetvgo/main/insolencetvgo.m3u"><strong> 🇺🇸 Usa</strong></div>
-          <div class="country" data-file="s.m3u"><strong> 🇸🇦 Saudiarbia</strong></div>
+          <div class="country" data-file="s.m3u"><strong> 🇸🇦 saudiarabia</strong></div>
+        
+        <div class="country" data-file="https://iptv-org.github.io/iptv/countries/tr.m3u"><strong> 🇹🇷 turkey</strong></div>
+        <div class="country" data-file="https://iptv-org.github.io/iptv/countries/ch.m3u"><strong> 🇨🇳 chaina</strong></div>
+        <div class="country" data-file="https://iptv-org.github.io/iptv/countries/us.m3u"><strong> 🇺🇸 Usa</strong></div>
+        
+        <div class="country" data-file="https://iptv-org.github.io/iptv/index.m3u"><strong> 🌍 All world </strong></div>
         </div>
       </div>
 
@@ -508,6 +550,12 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
         document.getElementById('playerView').classList.add('hidden'); 
         // Clear audio buttons when leaving player view
         document.getElementById('audioTrackSelection').innerHTML = '';
+        
+        // When going back, show the slider again
+        const sliderBox = document.getElementById('sliderContainerBox');
+        if (sliderBox) {
+            sliderBox.style.display = 'block';
+        }
     }
 
     document.getElementById('back').addEventListener('click',()=>{ 
@@ -517,13 +565,52 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
       document.getElementById('channelsGrid').innerHTML=''; 
     });
 
-    document.querySelectorAll('.country').forEach(el=>{
-      el.addEventListener('click',()=>{
-        const file = el.getAttribute('data-file');
-        const name = el.textContent.trim();
-        loadM3U(file,name);
-     })
-    })
+    // --- MODIFIED Country Click Handler to hide Slider ---
+    document.querySelectorAll('.country').forEach(el => {
+        el.addEventListener('click', () => {
+            // Hide the slider container when a country is selected
+            const sliderBox = document.getElementById('sliderContainerBox');
+            if (sliderBox) {
+                sliderBox.style.display = 'none';
+            }
+
+            const file = el.getAttribute('data-file');
+            const name = el.textContent.trim();
+            loadM3U(file, name);
+        });
+    });
+    // --- End Country Click Handler MODIFICATION ---
+    
+    // --- START Image Slider Rotation Logic (8 second rotation) ---
+    let slideIndex = 0;
+    // Call showSlides only once after channels are loaded or page is loaded
+    window.addEventListener('load', showSlides); 
+
+    function showSlides() {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      
+      // Hide all slides
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+      }
+      
+      // Increment index and loop back if needed
+      slideIndex++;
+      if (slideIndex > slides.length) {
+          slideIndex = 1
+        }
+      
+      // Show the current slide
+      if (slides.length > 0) {
+          slides[slideIndex-1].style.display = "block";  
+      }
+      
+      // Change image every 8 seconds (8000 milliseconds)
+      setTimeout(showSlides, 8000); 
+    }
+    // --- END Image Slider Rotation Logic ---
+
 
     // --- UPDATED PLAYSTREAM FUNCTION FOR MULTIPLE AUDIO TRACKS (Re-implemented) ---
     function playStream(url){
@@ -764,35 +851,6 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
         }
         toggleMenu();
     }
-    // --- Image Slider Logic (8 second rotation) ---
-let slideIndex = 0;
-showSlides();
-
-function showSlides() {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  
-  // Hide all slides
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  
-  // Increment index and loop back if needed
-  slideIndex++;
-  if (slideIndex > slides.length) {
-      slideIndex = 1
-    }
-  
-  // Show the current slide
-  if (slides.length > 0) {
-      slides[slideIndex-1].style.display = "block";  
-  }
-  
-  // Change image every 8 seconds (8000 milliseconds)
-  setTimeout(showSlides, 8000); 
-}
-// ---------------------------------------------
-
   </script>
 
 </body>
