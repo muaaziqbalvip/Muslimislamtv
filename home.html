@@ -7,15 +7,18 @@
   <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#000000">
   <title>Muslim Islam TV</title>
-  <style> html,body{overflow:hidden;height:100%;margin:0;font-family:Arial, Helvetica, sans-serif;background:#0f172a;color:#e6eef8; transition: background 0.5s, color 0.5s;}
+  <style> 
+      html,body{height:100%;margin:0;font-family:Arial, Helvetica, sans-serif;background:#0f172a;color:#e6eef8; transition: background 0.5s, color 0.5s;}
+      
     /* Force mobile-like container */
-    .wrap{max-width:px;width:100%;margin:12px auto;border-radius:8px;overflow:hidden;box-shadow:0 10px 30px rgba(2,6,23,.6);background:linear-gradient(180deg,#071024 0%,#071827 100%); position: relative; transition: background 0.5s;}
+    .wrap{max-width:1200px;width:100%;margin:12px auto;border-radius:8px;overflow:hidden;box-shadow:0 10px 30px rgba(2,6,23,.6);background:linear-gradient(180deg,#071024 0%,#071827 100%); position: relative; transition: background 0.5s;}
 
     /* Header */
     header{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:linear-gradient(90deg,#04213a,#072b4f);border-bottom:3px solid rgba(255,255,255,.03)}
     .brand{display:flex;align-items:center;gap:12px}
     .brand img{width:44px;height:44px;border-radius:8px;object-fit:cover}
-    .title{font-size:18px;font-weight:800;letter-spacing:.4px}
+    /* Simple Title - Neon effect removed as requested */
+    .title{font-size:18px;font-weight:800;letter-spacing:.4px} 
     .title small{display:block;font-size:11px;font-weight:600;opacity:.8}
 
     /* Menu Button Style */
@@ -95,6 +98,7 @@
   font-size:18px;
 }
 
+/* Splash image movement removed as requested */
 .splash img{
   width:120px;
   height:120px;
@@ -155,7 +159,7 @@
     height: 100%;
     border: 0;
 }
-/* ADDED: Styles for the dynamically inserted video element for HLS/M3U8 */
+/* Styles for the dynamically inserted video element for HLS/M3U8 */
 #playerContainer video {
     width: 100%;
     height: 100%;
@@ -185,16 +189,79 @@
 body.tv-mode { filter: contrast(1.2) brightness(1.1) sepia(0.3); }
 body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: inset 0 0 50px rgba(0,0,0,0.8); }
 
+/* --- Audio Track Button Styles (Re-added) --- */
+.audio-track-btn {
+    background: rgba(255,255,255,0.05); 
+    border: 1px solid rgba(255,255,255,0.2); 
+    color: white; 
+    padding: 6px 10px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-size: 12px;
+    transition: 0.2s;
+}
+.audio-track-btn:hover {
+    background: rgba(255,255,255,0.15);
+}
+.audio-track-btn.active {
+    background: #0ea5e9;
+    border-color: #0ea5e9;
+/* Slideshow container (YouTube Player Size) */
+.slideshow-container {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+  border-radius: 8px;
+  overflow: hidden;
+  /* Box Shadow aur background yahan nahi dein ge, woh .wrap se aayenge */
+  
+  /* 16:9 Video Aspect Ratio Set karna */
+  height: 0;
+  padding-bottom: 56.25%; 
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+  /* Slides ko container ke andar puri tarah fit karein */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+/* Image inside slide */
+.mySlides img {
+  width: 100%;
+  height: 100%;
+  /* object-fit: contain; yeh yaqeeni banata hai ke image poori dikhe aur zoom na ho */
+  object-fit: contain; 
+  background: #061222; /* Black bars ko dark background se fill karein */
+  display: block;
+  margin: 0 auto;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
   </style>
 </head>
 <body>
   
-  <!-- SOUNDS -->
   <audio id="sound1"><source src="s1.mp3" type="audio/mpeg"></audio>
   <audio id="sound2"><source src="s3.mp3" type="audio/mpeg"></audio>
   <audio id="sound3"><source src="s2.mp3" type="audio/mpeg"></audio>
 
-  <!-- SPLASH SCREENS -->
   <div id="splash1" class="splash">
     <img src="3.png">
     <p>Loading ...</p>
@@ -210,7 +277,6 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
 
  <div class="wrap">
     
-    <!-- SIDE MENU (NEW) -->
     <div id="sideMenu">
         <div class="menu-header">
             <span class="menu-title">⚙️ Settings</span>
@@ -251,7 +317,6 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
         </div>
       </div>
       
-      <!-- MENU BUTTON (NEW) -->
       <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
       <button id="installBtn" style="
@@ -260,7 +325,6 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
 
         <div class="status">
             <div class="stat-item" id="clock">--:--:--</div>
-            <!-- Battery removed to save space or kept hidden -->
             <div class="battery" style="display:none;">
               <div class="cell"><div class="level" id="battLevel" style="width:70%"></div></div>
               <div class="cap"></div>
@@ -270,6 +334,42 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
     
     
     <main>
+        <div class="wrap">
+  <div id="imageSlider" style="padding: 10px;">
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                 <img src="https://i.ibb.co/zTd0frmQ/hqdefault.jpg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <img src="https://i.ibb.co/hx41WHWb/sddefault.jpg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <img src="https://i.ibb.co/F4vF8nMP/images-5.jpg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <img src="https://i.ibb.co/wZ0rgCvk/images-3.jpg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <img src="https://i.ibb.co/PGggJkdP/images-8.jpg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <img src="https://i.ibb.co/LdLFv7SY/images-7.jpg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <img src="https://i.ibb.co/gZSkkQ9b/images-9.jpg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <img src="https://i.ibb.co/6cTdcJw9/images-4.jpg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <img src="https://i.ibb.co/8D12MRCg/images-2.jpg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <img src="https://i.ibb.co/6cTdcJw9/images-4.jpg" style="width:100%">
+        </div>
+        </div>
+</div>
+
       <div id="choose" class="choose-wrap">
         <div class="choose-title" id="chooseTitle">Choose the country:</div>
         <div class="countries">
@@ -277,8 +377,8 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
           <div class="country" data-file="i.m3u"><strong>🇮🇳India</strong></div>
           <div class="country" data-file="a.m3u"><strong>🇦🇫Afghanistan</strong></div>
           <div class="country" data-file="ir.m3u"><strong>🇮🇷Iran</strong></div>
-          <div class="country" data-file="s.m3u"><strong>🇸🇦 Saudiarbia</strong></div>
-          <div class="country" data-file="us.m3u"><strong> 🇺🇸 Usa</strong></div>
+          <div class="country" data-file="https://raw.githubusercontent.com/InsolenceWillow/insolencetvgo/main/insolencetvgo.m3u"><strong> 🇺🇸 Usa</strong></div>
+          <div class="country" data-file="s.m3u"><strong> 🇸🇦 Saudiarbia</strong></div>
         </div>
       </div>
 
@@ -293,6 +393,13 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
           <div id="playerContainer" class="player-container">
             </div>
         </div>
+        
+        <div id="audioTrackContainer" style="margin-top: 10px; margin-bottom: 10px;">
+          <div style="font-size: 14px; color: #9fb9d6; margin-bottom: 5px; font-weight: 700;">Audio Track:</div>
+          <div id="audioTrackSelection" style="display: flex; gap: 8px; flex-wrap: wrap;">
+            </div>
+        </div>
+        
         <div class="searchBox">
             <input type="text" id="searchInput" onkeyup="filterChannels()" placeholder="Search channels...">
         </div>
@@ -395,7 +502,13 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
     }
 
     function showPlayerView(){ document.getElementById('choose').classList.add('hidden'); document.getElementById('playerView').classList.remove('hidden'); }
-    function showChoose(){ document.getElementById('choose').classList.remove('hidden'); document.getElementById('playerView').classList.add('hidden'); }
+    
+    function showChoose(){ 
+        document.getElementById('choose').classList.remove('hidden'); 
+        document.getElementById('playerView').classList.add('hidden'); 
+        // Clear audio buttons when leaving player view
+        document.getElementById('audioTrackSelection').innerHTML = '';
+    }
 
     document.getElementById('back').addEventListener('click',()=>{ 
       showChoose(); 
@@ -412,12 +525,15 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
      })
     })
 
-    // --- ORIGINAL PLAYSTREAM FUNCTION RESTORED ---
+    // --- UPDATED PLAYSTREAM FUNCTION FOR MULTIPLE AUDIO TRACKS (Re-implemented) ---
     function playStream(url){
         const playerContainer = document.getElementById('playerContainer');
         playerContainer.innerHTML = ''; 
         if(window.hls) { try{ window.hls.destroy(); }catch(e){} }
 
+        // Clear audio buttons for new stream
+        document.getElementById('audioTrackSelection').innerHTML = '';
+        
         // YouTube handling
         if(url.startsWith('YOUTUBE:')){
             const videoId = url.replace('YOUTUBE:', '').trim();
@@ -429,13 +545,16 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
                     allowfullscreen>
                 </iframe>`;
             playerContainer.innerHTML = iframeHtml;
+            // Hide the Audio Track container contents for YouTube, as it's not applicable
+            document.getElementById('audioTrackSelection').style.display = 'none';
 
         } else if (url) {
             // HLS/Video handling
+            document.getElementById('audioTrackSelection').style.display = 'flex'; // Show container for HLS
             const videoElement = document.createElement('video');
             videoElement.controls = true;
             videoElement.playsInline = true;
-            videoElement.autoplay = true; // Auto play added
+            videoElement.autoplay = true; 
             videoElement.id = 'playerVideo';
             playerContainer.appendChild(videoElement);
 
@@ -443,17 +562,72 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
                 const hls = new Hls(); window.hls = hls;
                 hls.loadSource(url);
                 hls.attachMedia(videoElement);
+                
                 hls.on(Hls.Events.MANIFEST_PARSED, function() { 
                     videoElement.play().catch(()=>{}); 
                 });
+
+                // --- Audio Track Handling Logic ---
+                hls.on(Hls.Events.AUDIO_TRACKS_UPDATED, function(event, data) {
+                    const selectionDiv = document.getElementById('audioTrackSelection');
+                    selectionDiv.innerHTML = '';
+                    
+                    const tracks = data.audioTracks;
+                    
+                    // Show buttons only if more than one audio track is available
+                    if (tracks.length > 1) {
+                        tracks.forEach(track => {
+                            const button = document.createElement('button');
+                            // Use track name, language, or default ID
+                            const trackName = track.name || track.lang || `Track ${track.id}`;
+                            
+                            button.textContent = trackName;
+                            button.className = 'audio-track-btn';
+                            button.setAttribute('data-track-id', track.id);
+                            
+                            // Set active class for currently selected track
+                            if (track.id === hls.audioTrack) {
+                                button.classList.add('active');
+                            }
+                            
+                            button.onclick = function() {
+                                // Switch audio track in Hls.js
+                                hls.audioTrack = track.id;
+                                
+                                // Update active button state
+                                document.querySelectorAll('#audioTrackSelection .audio-track-btn').forEach(btn => btn.classList.remove('active'));
+                                this.classList.add('active');
+                            };
+                            selectionDiv.appendChild(button);
+                        });
+                    } else {
+                         selectionDiv.innerHTML = '<span style="color:#666; font-size:12px;">No multiple audio tracks found.</span>';
+                    }
+                });
+                
+                // Handle active track change if the Hls player changes it internally
+                hls.on(Hls.Events.AUDIO_TRACK_SWITCHED, function(event, data) {
+                    document.querySelectorAll('#audioTrackSelection .audio-track-btn').forEach(btn => {
+                        if (parseInt(btn.getAttribute('data-track-id')) === data.id) {
+                            btn.classList.add('active');
+                        } else {
+                            btn.classList.remove('active');
+                        }
+                    });
+                });
+
             } else if(videoElement.canPlayType('application/vnd.apple.mpegurl')){
+                // Fallback for native HLS (iOS/Safari)
                 videoElement.src = url; 
                 videoElement.addEventListener('loadedmetadata',()=>videoElement.play().catch(()=>{}));
+                document.getElementById('audioTrackSelection').innerHTML = '<span style="color:#666; font-size:12px;">Native HLS is being used (Audio track selection is unavailable).</span>';
             } else {
                 alert('Your browser does not support HLS playback.');
+                document.getElementById('audioTrackSelection').innerHTML = '';
             }
         } else {
             alert('Stream URL not found');
+            document.getElementById('audioTrackSelection').innerHTML = '';
         }
     }
 
@@ -467,30 +641,28 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
     }
   </script>
 
-  <!-- SPLASH & SOUND LOGIC -->
   <script>
   window.addEventListener("load", ()=>{
-    // Splash sequence
+    // Simplified Splash sequence
     setTimeout(()=>{
         document.getElementById("splash1").classList.add("hidden");
         document.getElementById("splash2").classList.remove("hidden");
-    },2000);
+    },1500); // Shorter duration
     setTimeout(()=>{
         document.getElementById("splash2").classList.add("hidden");
         document.getElementById("splash3").classList.remove("hidden");
-    },4000);
+    },3000); // Shorter duration
     setTimeout(()=>{
         document.getElementById("splash3").classList.add("hidden");
-    },6000);
+    },4500); // Shorter duration
     
     // Sound sequence
     document.getElementById("sound1").play().catch(()=>{});
-    setTimeout(()=>{ document.getElementById("sound2").play().catch(()=>{}); },2000);
-    setTimeout(()=>{ document.getElementById("sound3").play().catch(()=>{}); },4000);
+    setTimeout(()=>{ document.getElementById("sound2").play().catch(()=>{}); },1500);
+    setTimeout(()=>{ document.getElementById("sound3").play().catch(()=>{}); },3000);
   });
   </script>
 
-  <!-- PWA INSTALL LOGIC -->
   <script>
   let deferredPrompt;
   const installBtn = document.getElementById("installBtn");
@@ -507,7 +679,6 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
   });
   </script>
 
-  <!-- SERVICE WORKER -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -517,7 +688,6 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
     }
   </script>
 
-  <!-- NEW FEATURE LOGIC: MENU, THEMES, LANGUAGES, & COUNTER FIX -->
   <script>
     // 1. MENU TOGGLE
     function toggleMenu() {
@@ -594,6 +764,35 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
         }
         toggleMenu();
     }
+    // --- Image Slider Logic (8 second rotation) ---
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  
+  // Hide all slides
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  
+  // Increment index and loop back if needed
+  slideIndex++;
+  if (slideIndex > slides.length) {
+      slideIndex = 1
+    }
+  
+  // Show the current slide
+  if (slides.length > 0) {
+      slides[slideIndex-1].style.display = "block";  
+  }
+  
+  // Change image every 8 seconds (8000 milliseconds)
+  setTimeout(showSlides, 8000); 
+}
+// ---------------------------------------------
+
   </script>
 
 </body>
