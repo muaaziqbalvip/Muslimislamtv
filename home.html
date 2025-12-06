@@ -489,11 +489,11 @@ body.retro-tv-mode:before {
       <div id="choose" class="choose-wrap">
         <div class="choose-title" id="chooseTitle">Choose the country:</div>
         <div class="countries">
-          <div class="country" data-file="p.m3u"><strong>🇵🇰Pakistan</strong></div>
-          <div class="country" data-file="i.m3u"><strong>🇮🇳India</strong></div>
-          <div class="country" data-file="a.m3u"><strong>🇦🇫Afghanistan</strong></div>
-          <div class="country" data-file="ir.m3u"><strong>🇮🇷Iran</strong></div>
-          <div class="country" data-file="s.m3u"><strong> 🇸🇦 saudiarabia</strong></div>
+          <div class="country" data-file="https://iptv-org.github.io/iptv/countries/pk.m3u"><strong>🇵🇰Pakistan</strong></div>
+          <div class="country" data-file="https://iptv-org.github.io/iptv/countries/in.m3u"><strong>🇮🇳India</strong></div>
+          <div class="country" data-file="https://iptv-org.github.io/iptv/countries/af.m3u"><strong>🇦🇫Afghanistan</strong></div>
+          <div class="country" data-file="https://iptv-org.github.io/iptv/countries/ir.m3u"><strong>🇮🇷Iran</strong></div>
+          <div class="country" data-file="https://iptv-org.github.io/iptv/countries/sa.m3u"><strong> 🇸🇦 saudiarabia</strong></div>
         
         <div class="country" data-file="https://iptv-org.github.io/iptv/countries/tr.m3u"><strong> 🇹🇷 turkey</strong></div>
         <div class="country" data-file="https://iptv-org.github.io/iptv/countries/cn.m3u"><strong> 🇨🇳 chaina</strong></div>
@@ -552,8 +552,8 @@ body.retro-tv-mode:before {
     let currentChannelIndex = -1;
 
     // --- 🔑 PROXY: NETLIFY FUNCTION BASE URL ZAROOR SHAMIL KAREN ---
-    // ZAROORI: [YOUR-NETLIFY-APP-NAME] ko apne Netlify ke asal domain naam se badlein.
-    const NETLIFY_FUNCTION_BASE_URL = 'https://[YOUR-NETLIFY-APP-NAME].netlify.app/.netlify/functions/proxy'; 
+    // Yahan URL durust (corrected) kiya gaya hai.
+    const NETLIFY_FUNCTION_BASE_URL = 'https://plylistmuslimislam.netlify.app/.netlify/functions/proxy'; 
     // -------------------------------------------------------------------
 
     document.addEventListener('DOMContentLoaded', function(){});
@@ -691,6 +691,7 @@ body.retro-tv-mode:before {
     // --- End Country Click Handler MODIFICATION ---
     
     // --- START Image Slider Rotation Logic (8 second rotation) ---
+    // FIX: slideIndex ko 0 se shuru kiya gaya aur logic ko theek kiya gaya.
     let slideIndex = 0;
     // Call showSlides only once after channels are loaded or page is loaded
     window.addEventListener('load', showSlides); 
@@ -699,20 +700,21 @@ body.retro-tv-mode:before {
       let i;
       let slides = document.getElementsByClassName("mySlides");
       
-      // Hide all slides
+      // Agar slides na hon to ruk jayen
+      if (slides.length === 0) return;
+
+      // Sab slides ko chhipa dein
       for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";  
       }
       
-      // Increment index and loop back if needed
-      slideIndex++;
-      if (slideIndex > slides.length) {
-          slideIndex = 1
-        }
+      // Current slide ko dikhayen
+      slides[slideIndex].style.display = "block";
       
-      // Show the current slide
-      if (slides.length > 0) {
-          slides[slideIndex-1].style.display = "block";  
+      // Index ko agle slide par muntaqil karein aur loop karein
+      slideIndex++;
+      if (slideIndex >= slides.length) {
+          slideIndex = 0;
       }
       
       // Change image every 8 seconds (8000 milliseconds)
@@ -752,10 +754,11 @@ body.retro-tv-mode:before {
         // --- 🚀 PROXY LOGIC (HTTP to HTTPS conversion) ---
         let finalUrl = url;
 
+        // FIX: Yahan ghalat syntax ko theek kiya gaya hai.
         // Sirf HTTP links ko proxy ke zariye bhejenge aur YouTube links ko chhod denge
         if (!url.startsWith('YOUTUBE:') && url.startsWith('http://')) {
-            // NETLIFY_FUNCTION_BASE_URL yahan istemaal hoga
-            finalUrl = https://plylistmuslimislam.netlify.app/netlify/function/proxy.js+ '?url=' + encodeURIComponent(url); 
+            // NETLIFY_FUNCTION_BASE_URL yahan istemaal hoga (durust tareeqa)
+            finalUrl = NETLIFY_FUNCTION_BASE_URL + '?url=' + encodeURIComponent(url); 
             console.log("Original URL:", url, " | Using Proxy URL:", finalUrl);
         }
         // --- END PROXY LOGIC ---

@@ -1,19 +1,20 @@
 {
   "name": "Muslim Islam TV",
   "short_name": "MITV",
-  "start_url": "home.html",
+  "description": "Live Streams & Playlists - Offline Ready",
+  "start_url": "/home.html",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#87CEEB",
+  "background_color": "#02101a",
+  "theme_color": "#0ea5e9",
   "icons": [
     {
-      "src": "1.png",
-      "sizes": "500x500",
+      "src": "/3.png",
+      "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "2.png",
-      "sizes": "500x500",
+      "src": "/3.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ]
