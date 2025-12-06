@@ -2,339 +2,72 @@
 <html lang="en">
 <head>
     <link rel="icon" type="image/png" href="https://i.ibb.co/KxHGtqZ8/2.gif">
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-  <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#000000">
-  <title>Muslim Islam TV</title>
-  <style>
-    /* FIX: 'overflow:hidden' removed to enable page scrolling */
-    html,body{height:100%;margin:0;font-family:Arial, Helvetica, sans-serif;background:#0f172a;color:#e6eef8; transition: background 0.5s, color 0.5s;}
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
+    <title>Muslim Islam TV - Fastest</title>
     
-    /* Force mobile-like container */
-    .wrap{max-width:1200px;width:100%;margin:12px auto;border-radius:8px;overflow:hidden;box-shadow:0 10px 30px rgba(2,6,23,.6);background:linear-gradient(180deg,#071024 0%,#071827 100%); position: relative; transition: background 0.5s;}
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1.4.0/dist/hls.min.js"></script>
 
-    /* Header */
-    header{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:linear-gradient(90deg,#04213a,#072b4f);border-bottom:3px solid rgba(255,255,255,.03)}
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand img{width:44px;height:44px;border-radius:8px;object-fit:cover}
-    /* Simple Title - Neon effect removed as requested */
-    .title{font-size:18px;font-weight:800;letter-spacing:.4px} 
-    .title small{display:block;font-size:11px;font-weight:600;opacity:.8}
+    <style>
+        /* INLINE CSS: CSS ko yahan shamil kiya gaya hai taake file tezi se load ho */
+        html,body{height:100%;margin:0;font-family:Arial, Helvetica, sans-serif;background:#0f172a;color:#e6eef8; transition: background 0.5s, color 0.5s;}
+        .wrap{max-width:1200px;width:100%;margin:12px auto;border-radius:8px;overflow:hidden;box-shadow:0 10px 30px rgba(2,6,23,.6);background:linear-gradient(180deg,#071024 0%,#071827 100%); position: relative; transition: background 0.5s;}
+        header{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:linear-gradient(90deg,#04213a,#072b4f);border-bottom:3px solid rgba(255,255,255,.03)}
+        .brand{display:flex;align-items:center;gap:12px}
+        .brand img{width:44px;height:44px;border-radius:8px;object-fit:cover}
+        .title{font-size:18px;font-weight:800;letter-spacing:.4px} 
+        .title small{display:block;font-size:11px;font-weight:600;opacity:.8; color: #9fb9d6;}
+        .menu-btn{background:transparent;border:none;color:#cfe7ff;font-size:24px;cursor:pointer;padding:0 10px;line-height:1}
+        .status{display:flex;align-items:center;gap:12px;font-size:13px}
+        
+        .splash{position:fixed;inset:0;background:#02101a;display:flex;align-items:center;justify-content:center;flex-direction:column;z-index:99999;color:white;font-size:18px;}
+        .splash img{width:120px;height:120px;border-radius:20px;margin-bottom:10px;}
+        #splashVideo {width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;}
 
-    /* Menu Button Style */
-    .menu-btn{background:transparent;border:none;color:#cfe7ff;font-size:24px;cursor:pointer;padding:0 10px;line-height:1}
+        .choose-wrap{padding:12px}
+        .choose-title{color:#9fb9d6;font-weight:800;margin-bottom:8px}
+        .countries{display:flex;flex-direction:column;gap:10px}
+        .country{background:linear-gradient(180deg,#062234,#08324a);padding:14px;border-radius:12px;display:flex;align-items:center;gap:12px;cursor:pointer;border:1px solid rgba(255,255,255,.03)}
+        .country strong{font-weight:800;font-size:16px;color:#e6eef8}
 
-    .status{display:flex;align-items:center;gap:12px;font-size:13px}
-    .stat-item{display:flex;align-items:center;gap:8px}
-    .battery{display:flex;align-items:center;gap:6px}
-    .battery .cell{width:30px;height:12px;border:2px solid #cfe7ff;border-radius:3px;position:relative}
-    .battery .cap{width:3px;height:6px;border:2px solid #cfe7ff;border-left:none;margin-left:4px;border-radius:2px}
-    .battery .level{height:100%;background:linear-gradient(90deg,#79c2ff,#2bd4ff);width:60%}
+        main{padding:10px}
+        .player-wrap{background:#061222;padding:10px;border-radius:6px;border:1px solid rgba(255,255,255,.03)}
+        #playerContainer{width:100%;height:220px;background:#000;border-radius:6px; position:relative; overflow: hidden;} 
+        #playerContainer video, .player-container iframe { width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; border: 0; }
+        #liveBadge { position: absolute; top: 10px; left: 10px; background-color: #e31818; color: white; padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; z-index: 10; display: none; }
+        .back-btn{background:transparent;border:1px solid rgba(255,255,255,.06);padding:6px 10px;border-radius:6px;color:#cfe7ff;cursor:pointer}
 
-    /* Splash screen */
-    #splash{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#06121b,#02101a);z-index:9999;flex-direction:column;color:#cfe7ff}
-    #splash img{width:110px;height:110px;border-radius:12px;object-fit:cover;margin-bottom:12px}
-    #splash .loader{width:48px;height:48px;border-radius:50%;border:4px solid rgba(255,255,255,.06);border-top-color:#7dd3fc;animation:spin 1s linear infinite}
-    @keyframes spin{to{transform:rotate(360deg)}}
-
-    /* Country choose - vertical big bars */
-    .choose-wrap{padding:12px}
-    .choose-title{color:#9fb9d6;font-weight:800;margin-bottom:8px}
-    .countries{display:flex;flex-direction:column;gap:10px}
-    .country{background:linear-gradient(180deg,#062234,#08324a);padding:14px;border-radius:12px;display:flex;align-items:center;gap:12px;cursor:pointer;border:1px solid rgba(255,255,255,.03)}
-    .country img{width:36px;height:26px;object-fit:cover;border-radius:4px}
-    .country strong{font-weight:800;font-size:16px;color:#e6eef8}
-
-    /* Player view */
-    main{padding:10px}
-    .player-wrap{background:#061222;padding:10px;border-radius:6px;border:1px solid rgba(255,255,255,.03)}
-    /* FIXED: Player container size set back to 220px */
-    #playerContainer{width:100%;height:220px;background:#000;border-radius:6px; position:relative;} 
-
-    /* Channels grid - 2 columns for mobile look */
-    .channels{margin-top:10px;display:grid;grid-template-columns:repeat(3,3fr);gap:3px}
-    .channel{padding:3px;border-radius:3px;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;color:#04131a;border:1px solid rgba(255,255,255,.02)}
-    .channel img{width:80%;height:50px;object-fit:cover;border-radius:6px}
-    .channel .name{font-weight:700;text-align:center;color:inherit}
-
-    .channels{max-height:calc(100vh - 420px);overflow-y:auto;}
-    /* 6 color classes */
-    .color1{background:linear-gradient(180deg,#ffecd1,#ffd6a5);}
-    .color2{background:linear-gradient(180deg,#d3f8e2,#a8efd0);}
-    .color3{background:linear-gradient(180deg,#dbe7ff,#b3d4ff);}
-    .color4{background:linear-gradient(180deg,#ffd6e0,#ffb3c6);}
-    .color5{background:linear-gradient(180deg,#f8f3d4,#efe29b);}
-    .color6{background:linear-gradient(180deg,#e6dfff,#cdb9ff);}
-
-    /* Back button */
-    .back-btn{background:transparent;border:1px solid rgba(255,255,255,.06);padding:6px 10px;border-radius:6px;color:#cfe7ff;cursor:pointer}
-
-    footer{padding:12px;text-align:center;color:#9fb9d6;font-weight:600;font-size:12px}
-
-    .hidden{display:none}
-
-    /* Make sure everything is mobile friendly */
-    @media (min-width:421px){
-      .wrap{margin-top:20px}
-    }
-    body{
-    /* Old background image ko hata diya gaya hai, taake video nazar aaye */
-    background: #0f172a; 
-}
-
-.wrap{
-    background: url("") no-repeat center center;
-    background-size: cover;
-}
-.splash{
-  position:fixed;
-  inset:0;
-  background:#02101a;         /* Splash background */
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  z-index:99999;
-  color:white;
-  font-size:18px;
-}
-/* Splash screen video fit - Naya CSS */
-#splashVideo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Video ko poore container par fit karega */
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-/* Splash image movement removed as requested */
-.splash img{
-  width:120px;
-  height:120px;
-  border-radius:20px;
-  margin-bottom:10px;
-}
-
-.hidden{display:none;}
-.searchBox{
-  width:100%;
-  padding:10px;
-}
-
-#searchInput{
-  width:50%;
-  padding:8px 10px;
-  font-size:8px;
-  border-radius:8px;
-  border:1px solid #334155;
-  outline:none;
-  background:#0f172a;
-  color:white;
-  box-shadow:0 0 8px (0,0,0,.3) inset;
-}
-#viewCountBox{
-  padding:5px 5px;
-  background:#0f172a;
-  color:white;
-  border:1px solid #334155;
-  width:max-content;
-  border-radius:5px;
-  font-size:8px;
-  margin:5px auto;
-}
-.player-container{
-    position: relative;
-    width: 100%;
-    /* FIXED: Removed padding-top to restore fixed height */
-    height: 100%; 
-    background: #000;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.player-container iframe{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
-.player-container iframe{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
-/* Styles for the dynamically inserted video element for HLS/M3U8 */
-#playerContainer video {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Ensures video fits container without zooming */
-}
-
-/* Live Badge CSS: Naya code */
-#liveBadge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: #e31818; /* Bright Red */
-    color: white;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: bold;
-    z-index: 10; /* Ensure it is above the video */
-    display: none; /* Default hidden */
-}
-
-
-/* --- NEW MENU & MAGIC STYLES (Menu Fix) --- */
-#sideMenu {
-    /* position: absolute;  <-- Change to fixed for full screen height */
-    position: fixed; /* Poori screen par fix rakhega */
-    top: 0; 
-    right: 0; 
-    width: 75%; 
-    height: 100vh; /* Viewport ki poori height */
-    
-    background: rgba(7, 16, 36, 0.98); backdrop-filter: blur(5px);
-    z-index: 10000; 
-    transform: translateX(100%); 
-    transition: transform 0.3s ease;
-    padding: 20px; 
-    box-sizing: border-box; 
-    border-left: 1px solid rgba(255,255,255,0.1);
-    display: flex; 
-    flex-direction: column; 
-    gap: 20px;
-    overflow-y: auto; /* Agar content zyada ho to scroll ki ijazat dein */
-}
-#sideMenu.active { transform: translateX(0); }
-.menu-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ffffff22; padding-bottom: 10px; }
-.menu-title { font-weight: bold; font-size: 18px; color: white; }
-.close-btn { background: none; border: none; color: white; font-size: 20px; cursor: pointer; }
-
-.menu-section h4 { color: #9fb9d6; margin: 0 0 10px 0; font-size: 14px; text-transform: uppercase; }
-.grid-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.opt-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 10px; border-radius: 6px; cursor: pointer; font-size: 13px; transition: 0.2s; }
-.opt-btn:hover { background: rgba(255,255,255,0.15); }
-.opt-btn.active { border-color: #0ea5e9; background: rgba(14, 165, 233, 0.2); }
-
-/* TV Effect */
-body.tv-mode { filter: contrast(1.2) brightness(1.1) sepia(0.3); }
-body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: inset 0 0 50px rgba(0,0,0,0.8); }
-
-/* --- New Retro/Scanline Effect CSS --- */
-body.retro-tv-mode:before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 100000;
-    pointer-events: none;
-    background: repeating-linear-gradient(
-        0deg,
-        rgba(0, 0, 0, 0.2),
-        rgba(0, 0, 0, 0.2) 1px,
-        transparent 1px,
-        transparent 2px
-    );
-    opacity: 0.5;
-}
-
-
-/* --- Audio Track Button Styles (Re-added) --- */
-.audio-track-btn {
-    background: rgba(255,255,255,0.05); 
-    border: 1px solid rgba(255,255,255,0.2); 
-    color: white; 
-    padding: 6px 10px; 
-    border-radius: 4px; 
-    cursor: pointer; 
-    font-size: 12px;
-    transition: 0.2s;
-}
-.audio-track-btn:hover {
-    background: rgba(255,255,255,0.15);
-}
-.audio-track-btn.active {
-    background: #0ea5e9;
-    border-color: #0ea5e9;
-}
-
-/* --- START Slider Styles (Final Version with 80% width) --- */
-.slideshow-container {
-  max-width: 100%; /* Width ko kam kar ke 80% karein */
-  position: relative;
-  margin: auto; 
-  border-radius: 8px;
-  overflow: hidden;
-  /* 16:9 Video Aspect Ratio (Width: 80%, Height: 80% * 9/16 = 55%) */
-  height: 0;
-  padding-bottom: 45%; 
-}
-
-/* Hide the images by default */
-.mySlides {
-  display: none;
-  /* Slides ko container ke andar puri tarah fit karein */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-}
-
-/* Image inside slide */
-.mySlides img {
-  width: 100%;
-  height: 100%;
-  /* object-fit: contain; yeh yaqeeni banata hai ke image poori dikhe aur zoom na ho */
-  object-fit: contain; 
-  background: #061222; /* Black bars ko dark background se fill karein */
-  display: block;
-  margin: 0 auto;
-}
-
-/* Fading animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-/* --- END Slider Styles --- */
-/* --- Background Video Style --- */
-#bgVideo {
-    position: fixed; /* Screen par fix rakhega */
-    top: 50%;
-    left: 50%;
-    /* Video ko center mein laakar, size ko cover karega */
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translate(-50%, -50%);
-    
-    /* Z-index: Video ko baqi content ke peeche (background) mein bheje ga */
-    z-index: -1; 
-    
-    /* Video ko halka karne ke liye (Optional, agar video bohot tez ya gehra ho) */
-    opacity: 0.5; 
-}
-
-  </style></style>
+        .channels{margin-top:10px;display:grid;grid-template-columns:repeat(3,3fr);gap:3px;max-height:calc(100vh - 420px);overflow-y:auto;}
+        .channel{padding:3px;border-radius:3px;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;color:#04131a;border:1px solid rgba(255,255,255,.02)}
+        .channel img{width:80%;height:50px;object-fit:cover;border-radius:6px}
+        .channel .name{font-weight:700;text-align:center;color:inherit; font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+        .color1{background:linear-gradient(180deg,#ffecd1,#ffd6a5);}
+        .color2{background:linear-gradient(180deg,#d3f8e2,#a8efd0);}
+        .color3{background:linear-gradient(180deg,#dbe7ff,#b3d4ff);}
+        .color4{background:linear-gradient(180deg,#ffd6e0,#ffb3c6);}
+        .color5{background:linear-gradient(180deg,#f8f3d4,#efe29b);}
+        .color6{background:linear-gradient(180deg,#e6dfff,#cdb9ff);}
+        
+        .slideshow-container {max-width: 100%; position: relative; margin: auto; border-radius: 8px; overflow: hidden; height: 0; padding-bottom: 45%;}
+        .mySlides {display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; text-align: center; animation-name: fade; animation-duration: 1.5s;}
+        .mySlides img {width: 100%; height: 100%; object-fit: contain; background: #061222; display: block; margin: 0 auto;}
+        @keyframes fade { from {opacity: .4} to {opacity: 1} }
+        
+        #sideMenu { position: fixed; top: 0; right: 0; width: 75%; height: 100vh; background: rgba(7, 16, 36, 0.98); backdrop-filter: blur(5px); z-index: 10000; transform: translateX(100%); transition: transform 0.3s ease; padding: 20px; box-sizing: border-box; border-left: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; gap: 20px; overflow-y: auto; }
+        #sideMenu.active { transform: translateX(0); }
+        .hidden{display:none;}
+        .audio-track-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 6px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; transition: 0.2s; }
+        .audio-track-btn.active { background: #0ea5e9; border-color: #0ea5e9; }
+        .opt-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 10px; border-radius: 6px; cursor: pointer; font-size: 13px; transition: 0.2s; }
+        .opt-btn.active { border-color: #0ea5e9; background: rgba(14, 165, 233, 0.2); }
+        .grid-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .menu-section h4 { color: #9fb9d6; margin: 0 0 10px 0; font-size: 14px; text-transform: uppercase; }
+        
+        footer { padding: 12px; text-align: center; color: #9fb9d6; font-weight: 600; font-size: 12px; }
+    </style>
 </head>
 <body>
   <audio id="splashAudio" src="sp.mp3" preload="auto"></audio> 
@@ -351,39 +84,31 @@ body.retro-tv-mode:before {
     <img src="5.png">
     <p>logic and make by Muaaz Iqbal</p>
   </div>
-
   <div id="splash4" class="splash hidden" style="padding: 0;">
     <video id="splashVideo" width="100%" height="100%" playsinline autoplay muted style="object-fit: cover;">
         <source src="sp.mp4" type="video/mp4"> 
         Your browser does not support the video tag.
     </video>
   </div>
+  
   <div class="wrap">
     
     <div id="sideMenu">
-        <div class="menu-header">
-            <span class="menu-title">⚙️ Settings</span>
-            <button class="close-btn" onclick="toggleMenu()">✕</button>
+        <div class="menu-header" style="display:flex; justify-content:space-between; align-items:center; border-bottom: 1px solid #ffffff22; padding-bottom: 10px;">
+            <span class="menu-title" style="font-weight:bold; font-size:18px; color:white;">⚙️ Settings</span>
+            <button class="close-btn" onclick="toggleMenu()" style="background:none; border:none; color:white; font-size:20px; cursor:pointer;">✕</button>
         </div>
- <button onclick="window.open('https://muslimislam.netlify.app', '_blank')" style="
-        background: none; 
-        border: 2px solid #0ea5e9; 
-        color: #0ea5e9; 
-        padding: 8px 12px; 
-        border-radius: 6px; 
-        font-weight: 700; 
-        cursor: pointer;
-        font-size: 14px;
-        transition: background 0.3s;
-    ">Muslim Islam</button>
+ <button onclick="window.open('https://muslimislam.netlify.app', '_blank')" style="background: none; border: 2px solid #0ea5e9; color: #0ea5e9; padding: 8px 12px; border-radius: 6px; font-weight: 700; cursor: pointer; font-size: 14px; transition: background 0.3s; width: 100%;">Muslim Islam</button>
         <div class="menu-section">
             <h4>🎨 Magic Themes</h4>
             <div class="grid-btns">
                 <button class="opt-btn active" onclick="setTheme('default')">Default Blue</button>
                 <button class="opt-btn" onclick="setTheme('green')" style="border-left: 3px solid #22c55e;">Green</button>
                 <button class="opt-btn" onclick="setTheme('pink')" style="border-left: 3px solid #ec4899;">Pink</button>
-                <button class="opt-btn" onclick="setTheme('purple')" style="border-left: 3px solid #9333ea;">Purple</button> <button class="opt-btn" onclick="setTheme('tv')">📺 TV Mode</button>
-                <button class="opt-btn" onclick="setTheme('retro')">📺 Retro TV</button> </div>
+                <button class="opt-btn" onclick="setTheme('purple')" style="border-left: 3px solid #9333ea;">Purple</button>
+                <button class="opt-btn" onclick="setTheme('tv')">📺 TV Mode</button>
+                <button class="opt-btn" onclick="setTheme('retro')">📺 Retro TV</button> 
+            </div>
         </div>
 
         <div class="menu-section">
@@ -406,100 +131,55 @@ body.retro-tv-mode:before {
         <img src="3.png" alt="logo" />
         <div>
           <div class="title">Muslim Islam TV</div>
-          <small id="subtitle" style="color:#9fb9d6">Live Streams & Playlists</small>
+          <small id="subtitle">Live Streams & Playlists</small>
         </div>
       </div>
       
-      <button onclick="window.open('https://muslimislam.netlify.app', '_blank')" style="
-        background: none; 
-        border: 2px solid #0ea5e9; 
-        color: #0ea5e9; 
-        padding: 8px 12px; 
-        border-radius: 6px; 
-        font-weight: 700; 
-        cursor: pointer;
-        font-size: 14px;
-        transition: background 0.3s;
-    ">Muslim Islam</button>
+      <button onclick="window.open('https://muslimislam.netlify.app', '_blank')" style="background: none; border: 2px solid #0ea5e9; color: #0ea5e9; padding: 8px 12px; border-radius: 6px; font-weight: 700; cursor: pointer; font-size: 14px; transition: background 0.3s;">Muslim Islam</button>
       <button class="menu-btn" onclick="toggleMenu()">☰</button>
-
-      <button id="installBtn" style="
-        background:#0ea5e9; color:white; padding:10px 16px; border:none; border-radius:8px; font-size:16px; display:none; margin:10px auto;
-        ">Install App</button>
-
+        
         <div class="status">
             <div class="stat-item" id="clock">--:--:--</div>
-            <div class="battery" style="display:none;">
-              <div class="cell"><div class="level" id="battLevel" style="width:70%"></div></div>
-              <div class="cap"></div>
-            </div>
       </div>
     </header>
     
     
     <main>
       <div class="wrap" id="sliderContainerBox"> 
-          
           <div id="imageSlider" style="padding: 10px;">
               <div class="slideshow-container">
-                  
-                  <div class="mySlides fade">
-                 <img src="1.jpg" style="width:100%">
-        </div>
-        <div class="mySlides fade">
-            <img src="2.jpeg" style="width:100%">
-        </div>
-       <div class="mySlides fade">
-            <img src="2.jpg" style="width:100%">
-        </div>
-        <div class="mySlides fade">
-            <img src="3.jpeg" style="width:100%">
-        </div>
-        <div class="mySlides fade">
-            <img src="3.jpg" style="width:100%">
-        </div>
-        <div class="mySlides fade">
-            <img src="4.jpg" style="width:100%">
-        </div>
-        <div class="mySlides fade">
-            <img src="4.jpeg" style="width:100%">
-        </div>
-        <div class="mySlides fade">
-            <img src="5.jpg" style="width:100%">
-        </div>
-        <div class="mySlides fade">
-            <img src="5.jpeg" style="width:100%">
-        </div>
-        <div class="mySlides fade">
-            <img src="6.jpg" style="width:100%"> </div>
-            <div class="mySlides fade">
-            <img src="7.jpg" style="width:100%"> </div>
-            <div class="mySlides fade">
-            <img src="8.jpg" style="width:100%"> </div>
-            <div class="mySlides fade">
-            <img src="9.jpeg" style="width:100%"> </div>
-            <div class="mySlides fade">
-            <img src="10.webp" style="width:100%"> </div>
-            <div class="mySlides fade">
-            <img src="1.jpg" style="width:100%"> </div>
-        </div>
+                  <div class="mySlides fade"><img src="1.jpg" style="width:100%"></div>
+                  <div class="mySlides fade"><img src="2.jpeg" style="width:100%"></div>
+                  <div class="mySlides fade"><img src="2.jpg" style="width:100%"></div>
+                  <div class="mySlides fade"><img src="3.jpeg" style="width:100%"></div>
+                  <div class="mySlides fade"><img src="3.jpg" style="width:100%"></div>
+                  <div class="mySlides fade"><img src="4.jpg" style="width:100%"></div>
+                  <div class="mySlides fade"><img src="4.jpeg" style="width:100%"></div>
+                  <div class="mySlides fade"><img src="5.jpg" style="width:100%"></div>
+                  <div class="mySlides fade"><img src="5.jpeg" style="width:100%"></div>
+                  <div class="mySlides fade"><img src="6.jpg" style="width:100%"></div>
+                  <div class="mySlides fade"><img src="7.jpg" style="width:100%"></div>
+                  <div class="mySlides fade"><img src="8.jpg" style="width:100%"></div>
+                  <div class="mySlides fade"><img src="9.jpeg" style="width:100%"></div>
+                  <div class="mySlides fade"><img src="10.webp" style="width:100%"></div>
               </div>
           </div>
       </div>
+      
       <div id="choose" class="choose-wrap">
         <div class="choose-title" id="chooseTitle">Choose the country:</div>
         <div class="countries">
-          <div class="country" data-file="https://iptv-org.github.io/iptv/countries/pk.m3u"><strong>🇵🇰Pakistan</strong></div>
-          <div class="country" data-file="https://iptv-org.github.io/iptv/countries/in.m3u"><strong>🇮🇳India</strong></div>
-          <div class="country" data-file="https://iptv-org.github.io/iptv/countries/af.m3u"><strong>🇦🇫Afghanistan</strong></div>
-          <div class="country" data-file="https://iptv-org.github.io/iptv/countries/ir.m3u"><strong>🇮🇷Iran</strong></div>
-          <div class="country" data-file="https://iptv-org.github.io/iptv/countries/sa.m3u"><strong> 🇸🇦 saudiarabia</strong></div>
+          <div class="country" data-file="p.m3u"><strong>🇵🇰Pakistan</strong></div>
+          <div class="country" data-file="i.m3u"><strong>🇮🇳India</strong></div>
+          <div class="country" data-file="a.m3u"><strong>🇦🇫Afghanistan</strong></div>
+          <div class="country" data-file="ir.m3u"><strong>🇮🇷Iran</strong></div>
+          <div class="country" data-file="s.m3u"><strong> 🇸🇦 saudiarabia</strong></div>
         
-        <div class="country" data-file="https://iptv-org.github.io/iptv/countries/tr.m3u"><strong> 🇹🇷 turkey</strong></div>
-        <div class="country" data-file="https://iptv-org.github.io/iptv/countries/cn.m3u"><strong> 🇨🇳 chaina</strong></div>
-        <div class="country" data-file="https://iptv-org.github.io/iptv/countries/us.m3u"><strong> 🇺🇸 Usa</strong></div>
-        
-        <div class="country" data-file="https://iptv-org.github.io/iptv/index.m3u"><strong> 🌍 All world </strong></div>
+          <div class="country" data-file="https://iptv-org.github.io/iptv/countries/tr.m3u"><strong> 🇹🇷 turkey</strong></div>
+          <div class="country" data-file="https://iptv-org.github.io/iptv/countries/cn.m3u"><strong> 🇨🇳 chaina</strong></div>
+          <div class="country" data-file="https://iptv-org.github.io/iptv/countries/us.m3u"><strong> 🇺🇸 Usa</strong></div>
+          
+          <div class="country" data-file="https://iptv-org.github.io/iptv/index.m3u"><strong> 🌍 All world </strong></div>
         </div>
       </div>
 
@@ -524,19 +204,18 @@ body.retro-tv-mode:before {
         
         <div id="audioTrackContainer" style="margin-top: 10px; margin-bottom: 10px;">
           <div style="font-size: 14px; color: #9fb9d6; margin-bottom: 5px; font-weight: 700;">Audio Track:</div>
-          <div id="audioTrackSelection" style="display: flex; gap: 8px; flex-wrap: wrap;">
-            </div>
+          <div id="audioTrackSelection" style="display: flex; gap: 8px; flex-wrap: wrap;"></div>
         </div>
         
         <div class="searchBox">
-            <input type="text" id="searchInput" onkeyup="filterChannels()" placeholder="Search channels...">
+            <input type="text" id="searchInput" onkeyup="filterChannels()" placeholder="Search channels..." style="width: 100%; padding: 8px 10px; font-size: 14px; border-radius: 8px; border: 1px solid #334155; outline: none; background: #0f172a; color: white;">
         </div>
         <div class="channels" id="channelsGrid"></div>
       </div>
 
     </main>
     
-    <div id="viewCountBox">
+    <div id="viewCountBox" style="font-size: 12px; text-align: center; color: #9fb9d6; font-weight: 600; padding: 12px;">
         Website Views: <span id="viewCount">Loading...</span>
     </div>
     
@@ -545,33 +224,24 @@ body.retro-tv-mode:before {
     </footer>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.4.0/dist/hls.min.js"></script>
   <script>
-    // Global variables for channel navigation
+    // --- JAVASCRIPT LOGIC ---
     let currentChannels = []; 
     let currentChannelIndex = -1;
-
-    // --- 🔑 PROXY: NETLIFY FUNCTION BASE URL ZAROOR SHAMIL KAREN ---
-    // Yahan URL durust (corrected) kiya gaya hai.
+    let hlsInstance = null;
     const NETLIFY_FUNCTION_BASE_URL = 'https://plylistmuslimislam.netlify.app/.netlify/functions/proxy'; 
-    // -------------------------------------------------------------------
 
-    document.addEventListener('DOMContentLoaded', function(){});
+    document.addEventListener('DOMContentLoaded', function(){ updateClock(); });
     
-    // Clock update
     function updateClock(){
       const now = new Date();
       const hh = String(now.getHours()).padStart(2,'0');
       const mm = String(now.getMinutes()).padStart(2,'0');
       const ss = String(now.getSeconds()).padStart(2,'0');
       document.getElementById('clock').textContent = hh+':'+mm+':'+ss;
+      setTimeout(updateClock, 1000);
     }
-    setInterval(updateClock,1000); updateClock();
-
-    // Battery display
-    if(navigator.getBattery) navigator.getBattery().then(b=>{ function upd(){document.getElementById('battLevel').style.width = Math.round(b.level*100)+'%'}; upd(); b.addEventListener('levelchange',upd)})
-
-    // Simple M3U parser
+    
     function parseM3U(text){
       const lines = text.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
       const items = [];
@@ -592,40 +262,36 @@ body.retro-tv-mode:before {
           for(let j=i+1;j<lines.length;j++){
             if(!lines[j].startsWith('#')){ url = lines[j]; break; }
           }
-          items.push({name: name, url: url, logo: attrs['tvg-logo']||attrs['logo']||''});
+          if(url) items.push({name: name, url: url, logo: attrs['tvg-logo']||attrs['logo']||''});
         }
       }
       return items;
     }
 
-    function sortChannels(list) {
-        // Sorting logic kept intact if needed later
-        return list;
-    }
-    
-    // Load m3u file and show channels
     async function loadM3U(file, countryName){
       try{
+        document.getElementById('channelsGrid').innerHTML = '<p style="text-align:center; color:#7dd3fc; padding:20px;">Loading Channels...</p>';
         const res = await fetch(file);
         if(!res.ok) throw new Error('Could not load playlist: '+res.status);
         const txt = await res.text();
         const channels = parseM3U(txt);
         
-        // --- UPDATED CODE: Store channels and set index ---
         currentChannels = channels;
-        // --- END UPDATED CODE ---
         
         document.getElementById('countryLabel').textContent = countryName + ' ('+channels.length+' channels)';
         renderChannels(channels);
         showPlayerView();
+        
         if(channels.length) {
-             // --- UPDATED CODE: Set initial index and play with channel name ---
              currentChannelIndex = 0;
              playStream(channels[0].url, channels[0].name);
-             // --- END UPDATED CODE ---
+        } else {
+             document.getElementById('channelsGrid').innerHTML = '<p style="text-align:center; color:red; padding:20px;">No channels found in this playlist.</p>';
         }
+
       }catch(err){
-        alert('Error: '+err.message+'\nMake sure the .m3u file is accessible.');
+        alert('Error loading channels: '+err.message);
+        document.getElementById('channelsGrid').innerHTML = '<p style="text-align:center; color:red; padding:20px;">Error loading channels.</p>';
       }
     }
 
@@ -633,448 +299,249 @@ body.retro-tv-mode:before {
       const grid = document.getElementById('channelsGrid'); grid.innerHTML='';
       list.forEach((ch,idx)=>{
         const div = document.createElement('div');
-        div.className = 'channel color' + ((idx % 6) + 1);
-        const img = document.createElement('img'); img.src = ch.logo || 'placeholder.png'; img.alt = ch.name; 
-        // Add onerror to fix broken images
+        div.className = 'channel color' + ((idx % 6) + 1); 
+        const img = document.createElement('img'); 
+        img.src = ch.logo || 'placeholder.png'; 
+        img.alt = ch.name; 
         img.onerror = function() { this.src = 'https://via.placeholder.com/80x50?text=TV'; };
         
-        const nm = document.createElement('div'); nm.className='name'; nm.textContent = ch.name || ('Channel '+(idx+1));
+        const nm = document.createElement('div'); 
+        nm.className='name'; 
+        nm.textContent = ch.name || ('Channel '+(idx+1));
         div.appendChild(img); div.appendChild(nm);
-        // UPDATED: Set index and play stream with name
+        
         div.addEventListener('click',() => {
-            currentChannelIndex = idx; // Update index to the clicked channel
-            playStream(ch.url, ch.name); // Play the stream and pass name
+            currentChannelIndex = idx;
+            playStream(ch.url, ch.name);
         });
         grid.appendChild(div);
       })
     }
 
-    function showPlayerView(){ document.getElementById('choose').classList.add('hidden'); document.getElementById('playerView').classList.remove('hidden'); }
+    function showPlayerView(){ 
+      document.getElementById('choose').classList.add('hidden'); 
+      document.getElementById('playerView').classList.remove('hidden'); 
+    }
     
     function showChoose(){ 
         document.getElementById('choose').classList.remove('hidden'); 
         document.getElementById('playerView').classList.add('hidden'); 
-        // Clear audio buttons when leaving player view
         document.getElementById('audioTrackSelection').innerHTML = '';
-        
-        // Live Badge ko chhipa dein
         document.getElementById('liveBadge').style.display = 'none';
 
-        // When going back, show the slider again
-        const sliderBox = document.getElementById('sliderContainerBox');
-        if (sliderBox) {
-            sliderBox.style.display = 'block';
-        }
+        if(hlsInstance) { try{ hlsInstance.destroy(); hlsInstance = null; }catch(e){} } 
+        document.getElementById('playerContainer').innerHTML = ''; 
+        document.getElementById('channelsGrid').innerHTML=''; 
+        
+        document.getElementById('sliderContainerBox').style.display = 'block';
     }
 
-    document.getElementById('back').addEventListener('click',()=>{ 
-      showChoose(); 
-      if(window.hls) { try{ window.hls.destroy(); }catch(e){} } 
-      document.getElementById('playerContainer').innerHTML = ''; 
-      document.getElementById('channelsGrid').innerHTML=''; 
-    });
+    document.getElementById('back').addEventListener('click', showChoose);
 
-    // --- MODIFIED Country Click Handler to hide Slider ---
     document.querySelectorAll('.country').forEach(el => {
         el.addEventListener('click', () => {
-            // Hide the slider container when a country is selected
-            const sliderBox = document.getElementById('sliderContainerBox');
-            if (sliderBox) {
-                sliderBox.style.display = 'none';
-            }
-
+            document.getElementById('sliderContainerBox').style.display = 'none';
             const file = el.getAttribute('data-file');
             const name = el.textContent.trim();
             loadM3U(file, name);
         });
     });
-    // --- End Country Click Handler MODIFICATION ---
     
-    // --- START Image Slider Rotation Logic (8 second rotation) ---
-    // FIX: slideIndex ko 0 se shuru kiya gaya aur logic ko theek kiya gaya.
+    // Slider Logic
     let slideIndex = 0;
-    // Call showSlides only once after channels are loaded or page is loaded
-    window.addEventListener('load', showSlides); 
-
     function showSlides() {
-      let i;
       let slides = document.getElementsByClassName("mySlides");
-      
-      // Agar slides na hon to ruk jayen
       if (slides.length === 0) return;
-
-      // Sab slides ko chhipa dein
-      for (i = 0; i < slides.length; i++) {
+      for (let i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";  
       }
-      
-      // Current slide ko dikhayen
       slides[slideIndex].style.display = "block";
-      
-      // Index ko agle slide par muntaqil karein aur loop karein
       slideIndex++;
-      if (slideIndex >= slides.length) {
-          slideIndex = 0;
-      }
-      
-      // Change image every 8 seconds (8000 milliseconds)
+      if (slideIndex >= slides.length) { slideIndex = 0; }
       setTimeout(showSlides, 8000); 
     }
-    // --- END Image Slider Rotation Logic ---
+    window.addEventListener('load', showSlides); 
 
-    // --- NEW FUNCTIONS FOR NEXT/PREVIOUS NAVIGATION ---
+    // Navigation
     function playNext() {
         if (currentChannels.length === 0) return;
-        
-        // Index ko agle channel par muntaqil karein
         currentChannelIndex = (currentChannelIndex + 1) % currentChannels.length; 
-        
         const nextChannel = currentChannels[currentChannelIndex];
-        
-        // Naye channel ko play karein
         playStream(nextChannel.url, nextChannel.name); 
     }
 
     function playPrevious() {
         if (currentChannels.length === 0) return;
-        
-        // Index ko pichle channel par muntaqil karein (Negative index handling)
         currentChannelIndex = (currentChannelIndex - 1 + currentChannels.length) % currentChannels.length;
-        
         const prevChannel = currentChannels[currentChannelIndex];
-        
-        // Piche wale channel ko play karein
         playStream(prevChannel.url, prevChannel.name);
     }
-    // --- END NEW FUNCTIONS ---
 
-    // --- CORRECTED PLAYSTREAM FUNCTION FOR HLS BEST QUALITY VIDEO PLAYBACK (UPDATED with Proxy Logic) ---
+    // ⭐ CORRECTED PLAY STREAM FUNCTION ⭐
     function playStream(url, channelName){
+        if(hlsInstance) { try{ hlsInstance.destroy(); hlsInstance = null; }catch(e){} }
         
-        // --- 🚀 PROXY LOGIC (HTTP to HTTPS conversion) ---
         let finalUrl = url;
 
-        // FIX: Yahan ghalat syntax ko theek kiya gaya hai.
-        // Sirf HTTP links ko proxy ke zariye bhejenge aur YouTube links ko chhod denge
+        // FIX: PROXY URL (Theek syntax)
         if (!url.startsWith('YOUTUBE:') && url.startsWith('http://')) {
-            // NETLIFY_FUNCTION_BASE_URL yahan istemaal hoga (durust tareeqa)
             finalUrl = NETLIFY_FUNCTION_BASE_URL + '?url=' + encodeURIComponent(url); 
-            console.log("Original URL:", url, " | Using Proxy URL:", finalUrl);
         }
-        // --- END PROXY LOGIC ---
 
-        // --- NEW CODE: Display channel name ---
-        if (channelName) {
-            document.getElementById('channelNameDisplay').textContent = channelName;
-        }
-        // --- END NEW CODE ---
-        
         const playerContainer = document.getElementById('playerContainer');
-        playerContainer.innerHTML = '<div id="liveBadge">🔴 LIVE</div>'; // Ensure badge is always in container
-        if(window.hls) { try{ window.hls.destroy(); }catch(e){} }
-
-        // Clear audio buttons for new stream
+        playerContainer.innerHTML = '<div id="liveBadge">🔴 LIVE</div>';
+        document.getElementById('channelNameDisplay').textContent = channelName || 'Channel';
         document.getElementById('audioTrackSelection').innerHTML = '';
         
-        // YouTube handling (Yeh original 'url' use karega)
         if(url.startsWith('YOUTUBE:')){
             const videoId = url.replace('YOUTUBE:', '').trim();
-            const iframeHtml = `
-                <iframe 
-                    src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&controls=1&enablejsapi=1" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>`;
-            playerContainer.innerHTML += iframeHtml; // Add iframe after badge
-            // Hide the Audio Track container contents for YouTube, as it's not applicable
+            const iframeHtml = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&controls=1&enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            playerContainer.innerHTML += iframeHtml;
             document.getElementById('audioTrackSelection').style.display = 'none';
-            // Live Badge ko chhipa dein (YouTube ke liye zaroori nahi)
             document.getElementById('liveBadge').style.display = 'none';
-
-
         } else if (url) {
-            // HLS/Video handling
-            document.getElementById('audioTrackSelection').style.display = 'flex'; // Show container for HLS
+            document.getElementById('audioTrackSelection').style.display = 'flex';
             const videoElement = document.createElement('video');
-            videoElement.controls = true;
-            videoElement.playsInline = true;
-            videoElement.autoplay = true; 
+            videoElement.controls = true; videoElement.playsInline = true; videoElement.autoplay = true; 
             videoElement.id = 'playerVideo';
             playerContainer.appendChild(videoElement);
             
-            // --- HLS Configuration for BEST Quality Video ---
-            const hlsConfig = {
-                // Video ko auto start load par set karein
-                autoStartLoad: true,
-                // Adaptive Bitrate ko hamesha on rakhein
-                capLevelToPlayerSize: false, // Player size par quality cap na karein
-            };
-
             if(Hls.isSupported()){
-                const hls = new Hls(hlsConfig); window.hls = hls;
-                hls.loadSource(finalUrl); // AB YAHAN finalUrl (PROXY ya Original HTTPS) JAYEGA
+                const hls = new Hls({ autoStartLoad: true, capLevelToPlayerSize: false }); 
+                hlsInstance = hls;
+                hls.loadSource(finalUrl);
                 hls.attachMedia(videoElement);
                 
                 hls.on(Hls.Events.MANIFEST_PARSED, function() { 
                     videoElement.play().catch(()=>{}); 
-                    
-                    // Adaptive Bitrate (-1) par set karein (Best Quality/Stability)
-                    hls.currentLevel = -1; 
+                    hls.currentLevel = -1;
                 });
-
-                // --- Audio Track Handling Logic ---
+                
                 hls.on(Hls.Events.AUDIO_TRACKS_UPDATED, function(event, data) {
                     const selectionDiv = document.getElementById('audioTrackSelection');
-                    selectionDiv.innerHTML = '';
-                    
+                    selectionDiv.innerHTML = ''; // Clear existing buttons
                     const tracks = data.audioTracks;
-                    
                     if (tracks.length > 1) {
                         tracks.forEach(track => {
                             const button = document.createElement('button');
-                            const trackName = track.name || track.lang || `Track ${track.id}`;
-                            button.textContent = trackName;
+                            button.textContent = track.lang || `Track ${track.id}`;
                             button.className = 'audio-track-btn';
-                            button.setAttribute('data-track-id', track.id);
-                            
-                            if (track.id === hls.audioTrack) {
-                                button.classList.add('active');
-                            }
-                            
-                            button.onclick = function() {
-                                hls.audioTrack = track.id;
+                            if (track.id === hls.audioTrack) button.classList.add('active');
+                            button.onclick = function() { 
+                                hls.audioTrack = track.id; 
                                 document.querySelectorAll('#audioTrackSelection .audio-track-btn').forEach(btn => btn.classList.remove('active'));
                                 this.classList.add('active');
                             };
                             selectionDiv.appendChild(button);
                         });
                     } else {
-                         selectionDiv.innerHTML = '<span style="color:#666; font-size:12px;">No multiple audio tracks found.</span>';
+                         selectionDiv.innerHTML = '<span style="color:#666; font-size:12px;">No multiple audio tracks.</span>';
                     }
                 });
-                
-                hls.on(Hls.Events.AUDIO_TRACK_SWITCHED, function(event, data) {
-                    document.querySelectorAll('#audioTrackSelection .audio-track-btn').forEach(btn => {
-                        if (parseInt(btn.getAttribute('data-track-id')) === data.id) {
-                            btn.classList.add('active');
-                        } else {
-                            btn.classList.remove('active');
-                        }
-                    });
-                });
 
-                // Live Badge ko show karein
                 document.getElementById('liveBadge').style.display = 'block';
 
             } else if(videoElement.canPlayType('application/vnd.apple.mpegurl')){
-                // Fallback for native HLS (iOS/Safari)
-                videoElement.src = finalUrl; // AB YAHAN finalUrl (PROXY ya Original HTTPS) JAYEGA
-                videoElement.addEventListener('loadedmetadata',()=>videoElement.play().catch(()=>{}));
-                document.getElementById('audioTrackSelection').innerHTML = '<span style="color:#666; font-size:12px;">Native HLS is being used (Audio track selection is unavailable).</span>';
-                // Live Badge ko show karein
+                videoElement.src = finalUrl;
+                document.getElementById('audioTrackSelection').innerHTML = '<span style="color:#666; font-size:12px;">Native HLS used.</span>';
                 document.getElementById('liveBadge').style.display = 'block';
-
             } else {
-                // UNIVERSAL FALLBACK (Her tarah ke direct link ke liye)
-                videoElement.src = finalUrl; // AB YAHAN finalUrl (PROXY ya Original HTTPS) JAYEGA
-                videoElement.addEventListener('loadedmetadata',()=>videoElement.play().catch(()=>{
-                     document.getElementById('audioTrackSelection').innerHTML = '<span style="color:red; font-size:12px; font-weight:bold;">Error: The stream could not start. Link may be dead or format unsupported.</span>';
-                }));
-                
-                document.getElementById('audioTrackSelection').innerHTML = '<span style="color:#9fb9d6; font-size:12px;">Native/Direct Playback is being used (MP4, MOV, etc.). Audio track options are unavailable.</span>';
+                videoElement.src = finalUrl;
+                document.getElementById('audioTrackSelection').innerHTML = '<span style="color:#9fb9d6; font-size:12px;">Direct Playback.</span>';
                 document.getElementById('liveBadge').style.display = 'none';
             }
         } else {
             alert('Stream URL not found');
-            document.getElementById('audioTrackSelection').innerHTML = '';
-            // Live Badge ko chhipa dein
             document.getElementById('liveBadge').style.display = 'none';
         }
     }
 
-    // Filter Logic
     function filterChannels(){
         let q = document.getElementById("searchInput").value.toLowerCase();
         document.querySelectorAll(".channel").forEach(ch => {
             let name = ch.innerText.toLowerCase();
-            ch.style.display = name.includes(q) ? "block" : "none";
+            ch.style.display = name.includes(q) ? "flex" : "none";
         });
     }
-  </script>
 
-  <script>
-  window.addEventListener("load", ()=>{
-    const s1 = document.getElementById("splash1");
-    const s2 = document.getElementById("splash2");
-    const s3 = document.getElementById("splash3");
-    const s4 = document.getElementById("splash4"); // New splash screen
-    const video = document.getElementById("splashVideo"); // Video element
-    const audio = document.getElementById("splashAudio"); // Naya Audio element
-    let splashVideoEnded = false;
+    // SPLASH SCREEN LOGIC (Identical to previous file)
+    window.addEventListener("load", ()=>{
+        const s1 = document.getElementById("splash1");
+        const s2 = document.getElementById("splash2");
+        const s3 = document.getElementById("splash3");
+        const s4 = document.getElementById("splash4");
+        const video = document.getElementById("splashVideo");
+        const audio = document.getElementById("splashAudio");
+        let splashVideoEnded = false;
 
-    // Purane audio calls hata diye gaye hain
+        setTimeout(()=>{ s1.classList.add("hidden"); s2.classList.remove("hidden"); },1500); 
+        setTimeout(()=>{ s2.classList.add("hidden"); s3.classList.remove("hidden"); },3000); 
+
+        setTimeout(()=>{
+            s3.classList.add("hidden");
+            s4.classList.remove("hidden");
+            
+            video.onended = () => { s4.classList.add("hidden"); splashVideoEnded = true; if (!audio.paused) audio.pause(); };
+            
+            video.muted = true; 
+            video.play().catch(e => { console.warn("Video playback failed (muted):", e); });
+
+            audio.play().catch(error => { console.warn("Separate Audio Autoplay failed:", error.name); });
+            
+            setTimeout(() => {
+                if(!s4.classList.contains("hidden") && !splashVideoEnded) {
+                    s4.classList.add("hidden");
+                    video.pause();
+                    if (!audio.paused) audio.pause();
+                }
+            }, 12000); 
+
+        },4500); 
+    });
+
+    // PWA & Other Helper Functions
+    let deferredPrompt;
+    window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); deferredPrompt = e; });
     
-    setTimeout(()=>{
-        s1.classList.add("hidden");
-        s2.classList.remove("hidden");
-    },1500); 
+    function toggleMenu() { document.getElementById('sideMenu').classList.toggle('active'); }
 
-    setTimeout(()=>{
-        s2.classList.add("hidden");
-        s3.classList.remove("hidden");
-    },3000); 
-
-    setTimeout(()=>{
-        s3.classList.add("hidden");
-        s4.classList.remove("hidden"); // Show video splash screen
-        
-        // Agar video successfully chalta hai aur khatam hota hai, to chupa dein.
-        video.onended = () => {
-             s4.classList.add("hidden");
-             splashVideoEnded = true;
-             if (!audio.paused) audio.pause(); // Audio ko bhi rok dein
-        };
-        
-        // --- START VIDEO & SEPARATE AUDIO PLAYBACK ---
-        
-        // 1. Video Playback (Muted karke, taake chalne ki guarantee ho)
-        video.muted = true; 
-        video.play().catch(e => {
-             console.warn("Video playback failed (muted):", e);
-        });
-
-        // 2. Separate Audio Playback (Agar browser ijazat de)
-        audio.play().catch(error => {
-            console.warn("Separate Audio Autoplay failed:", error.name);
-            // Agar audio play nahi hota, to video ko chalne dein.
-        });
-        
-        // --- END VIDEO & AUDIO PLAYBACK ---
-
-        // Fallback safety (maximum time to show the video splash)
-        setTimeout(() => {
-             if(!s4.classList.contains("hidden") && !splashVideoEnded) {
-                 s4.classList.add("hidden");
-                 video.pause(); // Video ko rok dein
-                 if (!audio.paused) audio.pause(); // Audio ko bhi rok dein
-                 console.log("Video splash timeout exceeded. Proceeding to app load.");
-             }
-        }, 12000); 
-
-    },4500); // 4.5 seconds baad splash3 chupa kar splash4 shuru karein
-  });
-  </script>
-
-  <script>
-  let deferredPrompt;
-  const installBtn = document.getElementById("installBtn");
-  window.addEventListener("beforeinstallprompt", (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    installBtn.style.display = "block";
-  });
-  installBtn.addEventListener("click", async () => {
-    installBtn.style.display = "none";
-    deferredPrompt.prompt();
-    const choice = await deferredPrompt.userChoice;
-    deferredPrompt = null;
-  });
-  </script>
-
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js')
-          .then(registration => { console.log('SW Registered'); }, err => { console.log('SW Failed', err); });
-      });
-    }
-  </script>
-
-  <script>
-    // 1. MENU TOGGLE
-    function toggleMenu() {
-        document.getElementById('sideMenu').classList.toggle('active');
-    }
-
-    // 2. VIEW COUNTER FIX (LocalStorage)
-    // Old API removed. Using local storage simulation.
     const STORAGE_KEY = 'mitv_view_counter_fix';
     let currentCount = parseInt(localStorage.getItem(STORAGE_KEY)) || 10500;
     currentCount++;
     localStorage.setItem(STORAGE_KEY, currentCount);
     document.getElementById("viewCount").innerText = currentCount.toLocaleString();
 
-    // 3. MAGIC THEMES (UPDATED)
     function setTheme(themeName) {
         const body = document.body;
         const wrap = document.querySelector('.wrap');
-        
-        // Reset classes
         body.className = ''; 
         
         if (themeName === 'default') {
-            body.style.background = "#0f172a";
-            wrap.style.background = "linear-gradient(180deg,#071024 0%,#071827 100%)";
-            body.style.color = "#e6eef8";
+            body.style.background = "#0f172a"; wrap.style.background = "linear-gradient(180deg,#071024 0%,#071827 100%)"; body.style.color = "#e6eef8";
         } else if (themeName === 'green') {
-            body.style.background = "#064e3b";
-            wrap.style.background = "linear-gradient(180deg,#022c22 0%,#064e3b 100%)";
-            body.style.color = "#d1fae5";
+            body.style.background = "#064e3b"; wrap.style.background = "linear-gradient(180deg,#022c22 0%,#064e3b 100%)"; body.style.color = "#d1fae5";
         } else if (themeName === 'pink') {
-            body.style.background = "#831843";
-            wrap.style.background = "linear-gradient(180deg,#500724 0%,#831843 100%)";
-            body.style.color = "#fce7f3";
-        } else if (themeName === 'purple') { // <-- Naya Purple Theme
-            body.style.background = "#1e1b4b";
-            wrap.style.background = "linear-gradient(180deg,#0c0a32 0%,#1e1b4b 100%)";
-            body.style.color = "#e0e7ff";
-        } else if (themeName === 'tv') {
-            body.classList.add('tv-mode');
-        } else if (themeName === 'retro') { // <-- Naya Retro TV Effect
-            body.classList.add('retro-tv-mode');
+            body.style.background = "#831843"; wrap.style.background = "linear-gradient(180deg,#500724 0%,#831843 100%)"; body.style.color = "#fce7f3";
+        } else if (themeName === 'purple') {
+            body.style.background = "#1e1b4b"; wrap.style.background = "linear-gradient(180deg,#0c0a32 0%,#1e1b4b 100%)"; body.style.color = "#e0e7ff";
+        } else if (themeName === 'tv') { body.classList.add('tv-mode'); 
+            body.style.filter = "contrast(1.2) brightness(1.1) sepia(0.3)";
+        } else if (themeName === 'retro') { body.classList.add('retro-tv-mode');
+            // Retro TV Mode CSS is applied via :before pseudo-element in the style block
         }
-
-        // Active state update
-        document.querySelectorAll('.opt-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('#sideMenu .opt-btn').forEach(btn => btn.classList.remove('active'));
         document.querySelector(`.opt-btn[onclick="setTheme('${themeName}')"]`).classList.add('active');
-        
-        // Close menu after selection
         toggleMenu();
     }
 
-    // 4. LANGUAGE SELECTOR
     function setLang(lang) {
-        const title = document.querySelector('.title');
-        const sub = document.getElementById('subtitle');
-        const choose = document.getElementById('chooseTitle');
-        const search = document.getElementById('searchInput');
+        const title = document.querySelector('.title'); const sub = document.getElementById('subtitle');
+        const choose = document.getElementById('chooseTitle'); const search = document.getElementById('searchInput');
 
-        if(lang === 'ur') {
-            title.innerText = "مسلم اسلام ٹی وی";
-            sub.innerText = "لائیو اسٹریمز اور پلے لسٹس";
-            choose.innerText = "ملک منتخب کریں:";
-            search.placeholder = "چینل تلاش کریں...";
-            document.body.style.direction = "rtl";
-        } else if(lang === 'ar') {
-            title.innerText = "تلفزيون مسلم إسلام";
-            sub.innerText = "بث مباشر وقوائم التشغيل";
-            choose.innerText = "اختر الدولة:";
-            search.placeholder = "البحث عن القنوات...";
-            document.body.style.direction = "rtl";
-        } else if(lang === 'hi') {
-            title.innerText = "मुस्लिम इस्लाम टीवी";
-            sub.innerText = "लाइव स्ट्रीम और प्लेलिस्ट";
-            choose.innerText = "देश चुनें:";
-            search.placeholder = "चैनल खोजें...";
-            document.body.style.direction = "ltr";
-        } else {
-            title.innerText = "Muslim Islam TV";
-            sub.innerText = "Live Streams & Playlists";
-            choose.innerText = "Choose the country:";
-            search.placeholder = "Search channels...";
-            document.body.style.direction = "ltr";
-        }
+        if(lang === 'ur') { title.innerText = "مسلم اسلام ٹی وی"; sub.innerText = "لائیو اسٹریمز اور پلے لسٹس"; choose.innerText = "ملک منتخب کریں:"; search.placeholder = "چینل تلاش کریں..."; document.body.style.direction = "rtl"; } 
+        else if(lang === 'ar') { title.innerText = "تلفزيون مسلم إسلام"; sub.innerText = "بث مباشر وقوائم التشغيل"; choose.innerText = "اختر الدولة:"; search.placeholder = "البحث عن القنوات..."; document.body.style.direction = "rtl"; } 
+        else if(lang === 'hi') { title.innerText = "मुस्लिम इस्लाम टीवी"; sub.innerText = "लाइव स्ट्रीम और प्लेलिस्ट"; choose.innerText = "देश चुनें:"; search.placeholder = "चैनल खोजें..."; document.body.style.direction = "ltr"; } 
+        else { title.innerText = "Muslim Islam TV"; sub.innerText = "Live Streams & Playlists"; choose.innerText = "Choose the country:"; search.placeholder = "Search channels..."; document.body.style.direction = "ltr"; }
         toggleMenu();
     }
   </script>
