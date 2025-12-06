@@ -100,7 +100,15 @@
   color:white;
   font-size:18px;
 }
-
+/* Splash screen video fit - Naya CSS */
+#splashVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Video ko poore container par fit karega */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 /* Splash image movement removed as requested */
 .splash img{
   width:120px;
@@ -124,7 +132,7 @@
   outline:none;
   background:#0f172a;
   color:white;
-  box-shadow:0 0 8px rgba(0,0,0,.3) inset;
+  box-shadow:0 0 8px (0,0,0,.3) inset;
 }
 #viewCountBox{
   padding:5px 5px;
@@ -169,13 +177,42 @@
     object-fit: contain; /* Ensures video fits container without zooming */
 }
 
-/* --- NEW MENU & MAGIC STYLES --- */
+/* Live Badge CSS: Naya code */
+#liveBadge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #e31818; /* Bright Red */
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 10; /* Ensure it is above the video */
+    display: none; /* Default hidden */
+}
+
+
+/* --- NEW MENU & MAGIC STYLES (Menu Fix) --- */
 #sideMenu {
-    position: absolute; top: 0; right: 0; width: 75%; height: 100%;
+    /* position: absolute;  <-- Change to fixed for full screen height */
+    position: fixed; /* Poori screen par fix rakhega */
+    top: 0; 
+    right: 0; 
+    width: 75%; 
+    height: 100vh; /* Viewport ki poori height */
+    
     background: rgba(7, 16, 36, 0.98); backdrop-filter: blur(5px);
-    z-index: 10000; transform: translateX(100%); transition: transform 0.3s ease;
-    padding: 20px; box-sizing: border-box; border-left: 1px solid rgba(255,255,255,0.1);
-    display: flex; flex-direction: column; gap: 20px;
+    z-index: 10000; 
+    transform: translateX(100%); 
+    transition: transform 0.3s ease;
+    padding: 20px; 
+    box-sizing: border-box; 
+    border-left: 1px solid rgba(255,255,255,0.1);
+    display: flex; 
+    flex-direction: column; 
+    gap: 20px;
+    overflow-y: auto; /* Agar content zyada ho to scroll ki ijazat dein */
 }
 #sideMenu.active { transform: translateX(0); }
 .menu-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ffffff22; padding-bottom: 10px; }
@@ -191,6 +228,27 @@
 /* TV Effect */
 body.tv-mode { filter: contrast(1.2) brightness(1.1) sepia(0.3); }
 body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: inset 0 0 50px rgba(0,0,0,0.8); }
+
+/* --- New Retro/Scanline Effect CSS --- */
+body.retro-tv-mode:before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100000;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.2) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    opacity: 0.5;
+}
+
 
 /* --- Audio Track Button Styles (Re-added) --- */
 .audio-track-btn {
@@ -218,9 +276,9 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
   margin: auto; 
   border-radius: 8px;
   overflow: hidden;
-  /* 16:9 Video Aspect Ratio (Width: 80%, Height: 80% * 9/16 = 45%) */
+  /* 16:9 Video Aspect Ratio (Width: 80%, Height: 80% * 9/16 = 55%) */
   height: 0;
-  padding-bottom: 55%; 
+  padding-bottom: 45%; 
 }
 
 /* Hide the images by default */
@@ -276,17 +334,11 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
     opacity: 0.5; 
 }
 
-  </style>
+  </style></style>
 </head>
 <body>
-  <video autoplay muted loop id="bgVideo">
-        <source src="1.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-  <audio id="sound1"><source src="s1.mp3" type="audio/mpeg"></audio>
-  <audio id="sound2"><source src="s3.mp3" type="audio/mpeg"></audio>
-  <audio id="sound3"><source src="s2.mp3" type="audio/mpeg"></audio>
-
+  <audio id="splashAudio" src="sp.mp3" preload="auto"></audio> 
+  
   <div id="splash1" class="splash">
     <img src="3.png">
     <p>Loading ...</p>
@@ -300,22 +352,38 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
     <p>logic and make by Muaaz Iqbal</p>
   </div>
 
- <div class="wrap">
+  <div id="splash4" class="splash hidden" style="padding: 0;">
+    <video id="splashVideo" width="100%" height="100%" playsinline autoplay muted style="object-fit: cover;">
+        <source src="sp.mp4" type="video/mp4"> 
+        Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="wrap">
     
     <div id="sideMenu">
         <div class="menu-header">
             <span class="menu-title">⚙️ Settings</span>
             <button class="close-btn" onclick="toggleMenu()">✕</button>
         </div>
-
+ <button onclick="window.open('https://muslimislam.netlify.app', '_blank')" style="
+        background: none; 
+        border: 2px solid #0ea5e9; 
+        color: #0ea5e9; 
+        padding: 8px 12px; 
+        border-radius: 6px; 
+        font-weight: 700; 
+        cursor: pointer;
+        font-size: 14px;
+        transition: background 0.3s;
+    ">Muslim Islam</button>
         <div class="menu-section">
             <h4>🎨 Magic Themes</h4>
             <div class="grid-btns">
                 <button class="opt-btn active" onclick="setTheme('default')">Default Blue</button>
                 <button class="opt-btn" onclick="setTheme('green')" style="border-left: 3px solid #22c55e;">Green</button>
                 <button class="opt-btn" onclick="setTheme('pink')" style="border-left: 3px solid #ec4899;">Pink</button>
-                <button class="opt-btn" onclick="setTheme('tv')">📺 TV Mode</button>
-            </div>
+                <button class="opt-btn" onclick="setTheme('purple')" style="border-left: 3px solid #9333ea;">Purple</button> <button class="opt-btn" onclick="setTheme('tv')">📺 TV Mode</button>
+                <button class="opt-btn" onclick="setTheme('retro')">📺 Retro TV</button> </div>
         </div>
 
         <div class="menu-section">
@@ -342,6 +410,17 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
         </div>
       </div>
       
+      <button onclick="window.open('https://muslimislam.netlify.app', '_blank')" style="
+        background: none; 
+        border: 2px solid #0ea5e9; 
+        color: #0ea5e9; 
+        padding: 8px 12px; 
+        border-radius: 6px; 
+        font-weight: 700; 
+        cursor: pointer;
+        font-size: 14px;
+        transition: background 0.3s;
+    ">Muslim Islam</button>
       <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
       <button id="installBtn" style="
@@ -398,9 +477,9 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
             <div class="mySlides fade">
             <img src="8.jpg" style="width:100%"> </div>
             <div class="mySlides fade">
-            <img src="9.peg" style="width:100%"> </div>
+            <img src="9.jpeg" style="width:100%"> </div>
             <div class="mySlides fade">
-            <img src="11.webp" style="width:100%"> </div>
+            <img src="10.webp" style="width:100%"> </div>
             <div class="mySlides fade">
             <img src="1.jpg" style="width:100%"> </div>
         </div>
@@ -417,7 +496,7 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
           <div class="country" data-file="s.m3u"><strong> 🇸🇦 saudiarabia</strong></div>
         
         <div class="country" data-file="https://iptv-org.github.io/iptv/countries/tr.m3u"><strong> 🇹🇷 turkey</strong></div>
-        <div class="country" data-file="https://iptv-org.github.io/iptv/countries/ch.m3u"><strong> 🇨🇳 chaina</strong></div>
+        <div class="country" data-file="https://iptv-org.github.io/iptv/countries/cn.m3u"><strong> 🇨🇳 chaina</strong></div>
         <div class="country" data-file="https://iptv-org.github.io/iptv/countries/us.m3u"><strong> 🇺🇸 Usa</strong></div>
         
         <div class="country" data-file="https://iptv-org.github.io/iptv/index.m3u"><strong> 🌍 All world </strong></div>
@@ -433,8 +512,15 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
 
         <div class="player-wrap">
           <div id="playerContainer" class="player-container">
+             <div id="liveBadge">🔴 LIVE</div>
             </div>
-        </div>
+            
+            <div id="channelControls" style="display:flex; justify-content:space-between; align-items:center; padding: 10px 0;">
+             <button onclick="playPrevious()" style="background:#0ea5e9; color:white; border:none; padding: 8px 15px; border-radius: 4px; cursor:pointer;">← Previous</button>
+             <strong id="channelNameDisplay" style="color:white; font-size:16px;">Channel Name</strong>
+             <button onclick="playNext()" style="background:#0ea5e9; color:white; border:none; padding: 8px 15px; border-radius: 4px; cursor:pointer;">Next →</button>
+          </div>
+          </div>
         
         <div id="audioTrackContainer" style="margin-top: 10px; margin-bottom: 10px;">
           <div style="font-size: 14px; color: #9fb9d6; margin-bottom: 5px; font-weight: 700;">Audio Track:</div>
@@ -461,11 +547,17 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
 
   <script src="https://cdn.jsdelivr.net/npm/hls.js@1.4.0/dist/hls.min.js"></script>
   <script>
-    // Hide splash logic
-    document.addEventListener('DOMContentLoaded', function(){
-      // Already handled by window load event below, but keeping for safety
-    });
+    // Global variables for channel navigation
+    let currentChannels = []; 
+    let currentChannelIndex = -1;
 
+    // --- 🔑 PROXY: NETLIFY FUNCTION BASE URL ZAROOR SHAMIL KAREN ---
+    // ZAROORI: [YOUR-NETLIFY-APP-NAME] ko apne Netlify ke asal domain naam se badlein.
+    const NETLIFY_FUNCTION_BASE_URL = 'https://[YOUR-NETLIFY-APP-NAME].netlify.app/.netlify/functions/proxy'; 
+    // -------------------------------------------------------------------
+
+    document.addEventListener('DOMContentLoaded', function(){});
+    
     // Clock update
     function updateClock(){
       const now = new Date();
@@ -518,10 +610,20 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
         if(!res.ok) throw new Error('Could not load playlist: '+res.status);
         const txt = await res.text();
         const channels = parseM3U(txt);
+        
+        // --- UPDATED CODE: Store channels and set index ---
+        currentChannels = channels;
+        // --- END UPDATED CODE ---
+        
         document.getElementById('countryLabel').textContent = countryName + ' ('+channels.length+' channels)';
         renderChannels(channels);
         showPlayerView();
-        if(channels.length) playStream(channels[0].url);
+        if(channels.length) {
+             // --- UPDATED CODE: Set initial index and play with channel name ---
+             currentChannelIndex = 0;
+             playStream(channels[0].url, channels[0].name);
+             // --- END UPDATED CODE ---
+        }
       }catch(err){
         alert('Error: '+err.message+'\nMake sure the .m3u file is accessible.');
       }
@@ -538,7 +640,11 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
         
         const nm = document.createElement('div'); nm.className='name'; nm.textContent = ch.name || ('Channel '+(idx+1));
         div.appendChild(img); div.appendChild(nm);
-        div.addEventListener('click',()=>playStream(ch.url));
+        // UPDATED: Set index and play stream with name
+        div.addEventListener('click',() => {
+            currentChannelIndex = idx; // Update index to the clicked channel
+            playStream(ch.url, ch.name); // Play the stream and pass name
+        });
         grid.appendChild(div);
       })
     }
@@ -551,6 +657,9 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
         // Clear audio buttons when leaving player view
         document.getElementById('audioTrackSelection').innerHTML = '';
         
+        // Live Badge ko chhipa dein
+        document.getElementById('liveBadge').style.display = 'none';
+
         // When going back, show the slider again
         const sliderBox = document.getElementById('sliderContainerBox');
         if (sliderBox) {
@@ -611,17 +720,60 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
     }
     // --- END Image Slider Rotation Logic ---
 
+    // --- NEW FUNCTIONS FOR NEXT/PREVIOUS NAVIGATION ---
+    function playNext() {
+        if (currentChannels.length === 0) return;
+        
+        // Index ko agle channel par muntaqil karein
+        currentChannelIndex = (currentChannelIndex + 1) % currentChannels.length; 
+        
+        const nextChannel = currentChannels[currentChannelIndex];
+        
+        // Naye channel ko play karein
+        playStream(nextChannel.url, nextChannel.name); 
+    }
 
-    // --- UPDATED PLAYSTREAM FUNCTION FOR MULTIPLE AUDIO TRACKS (Re-implemented) ---
-    function playStream(url){
+    function playPrevious() {
+        if (currentChannels.length === 0) return;
+        
+        // Index ko pichle channel par muntaqil karein (Negative index handling)
+        currentChannelIndex = (currentChannelIndex - 1 + currentChannels.length) % currentChannels.length;
+        
+        const prevChannel = currentChannels[currentChannelIndex];
+        
+        // Piche wale channel ko play karein
+        playStream(prevChannel.url, prevChannel.name);
+    }
+    // --- END NEW FUNCTIONS ---
+
+    // --- CORRECTED PLAYSTREAM FUNCTION FOR HLS BEST QUALITY VIDEO PLAYBACK (UPDATED with Proxy Logic) ---
+    function playStream(url, channelName){
+        
+        // --- 🚀 PROXY LOGIC (HTTP to HTTPS conversion) ---
+        let finalUrl = url;
+
+        // Sirf HTTP links ko proxy ke zariye bhejenge aur YouTube links ko chhod denge
+        if (!url.startsWith('YOUTUBE:') && url.startsWith('http://')) {
+            // NETLIFY_FUNCTION_BASE_URL yahan istemaal hoga
+            finalUrl = https://plylistmuslimislam.netlify.app/netlify/function/proxy.js+ '?url=' + encodeURIComponent(url); 
+            console.log("Original URL:", url, " | Using Proxy URL:", finalUrl);
+        }
+        // --- END PROXY LOGIC ---
+
+        // --- NEW CODE: Display channel name ---
+        if (channelName) {
+            document.getElementById('channelNameDisplay').textContent = channelName;
+        }
+        // --- END NEW CODE ---
+        
         const playerContainer = document.getElementById('playerContainer');
-        playerContainer.innerHTML = ''; 
+        playerContainer.innerHTML = '<div id="liveBadge">🔴 LIVE</div>'; // Ensure badge is always in container
         if(window.hls) { try{ window.hls.destroy(); }catch(e){} }
 
         // Clear audio buttons for new stream
         document.getElementById('audioTrackSelection').innerHTML = '';
         
-        // YouTube handling
+        // YouTube handling (Yeh original 'url' use karega)
         if(url.startsWith('YOUTUBE:')){
             const videoId = url.replace('YOUTUBE:', '').trim();
             const iframeHtml = `
@@ -631,9 +783,12 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen>
                 </iframe>`;
-            playerContainer.innerHTML = iframeHtml;
+            playerContainer.innerHTML += iframeHtml; // Add iframe after badge
             // Hide the Audio Track container contents for YouTube, as it's not applicable
             document.getElementById('audioTrackSelection').style.display = 'none';
+            // Live Badge ko chhipa dein (YouTube ke liye zaroori nahi)
+            document.getElementById('liveBadge').style.display = 'none';
+
 
         } else if (url) {
             // HLS/Video handling
@@ -644,14 +799,25 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
             videoElement.autoplay = true; 
             videoElement.id = 'playerVideo';
             playerContainer.appendChild(videoElement);
+            
+            // --- HLS Configuration for BEST Quality Video ---
+            const hlsConfig = {
+                // Video ko auto start load par set karein
+                autoStartLoad: true,
+                // Adaptive Bitrate ko hamesha on rakhein
+                capLevelToPlayerSize: false, // Player size par quality cap na karein
+            };
 
             if(Hls.isSupported()){
-                const hls = new Hls(); window.hls = hls;
-                hls.loadSource(url);
+                const hls = new Hls(hlsConfig); window.hls = hls;
+                hls.loadSource(finalUrl); // AB YAHAN finalUrl (PROXY ya Original HTTPS) JAYEGA
                 hls.attachMedia(videoElement);
                 
                 hls.on(Hls.Events.MANIFEST_PARSED, function() { 
                     videoElement.play().catch(()=>{}); 
+                    
+                    // Adaptive Bitrate (-1) par set karein (Best Quality/Stability)
+                    hls.currentLevel = -1; 
                 });
 
                 // --- Audio Track Handling Logic ---
@@ -661,27 +827,20 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
                     
                     const tracks = data.audioTracks;
                     
-                    // Show buttons only if more than one audio track is available
                     if (tracks.length > 1) {
                         tracks.forEach(track => {
                             const button = document.createElement('button');
-                            // Use track name, language, or default ID
                             const trackName = track.name || track.lang || `Track ${track.id}`;
-                            
                             button.textContent = trackName;
                             button.className = 'audio-track-btn';
                             button.setAttribute('data-track-id', track.id);
                             
-                            // Set active class for currently selected track
                             if (track.id === hls.audioTrack) {
                                 button.classList.add('active');
                             }
                             
                             button.onclick = function() {
-                                // Switch audio track in Hls.js
                                 hls.audioTrack = track.id;
-                                
-                                // Update active button state
                                 document.querySelectorAll('#audioTrackSelection .audio-track-btn').forEach(btn => btn.classList.remove('active'));
                                 this.classList.add('active');
                             };
@@ -692,7 +851,6 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
                     }
                 });
                 
-                // Handle active track change if the Hls player changes it internally
                 hls.on(Hls.Events.AUDIO_TRACK_SWITCHED, function(event, data) {
                     document.querySelectorAll('#audioTrackSelection .audio-track-btn').forEach(btn => {
                         if (parseInt(btn.getAttribute('data-track-id')) === data.id) {
@@ -703,18 +861,32 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
                     });
                 });
 
+                // Live Badge ko show karein
+                document.getElementById('liveBadge').style.display = 'block';
+
             } else if(videoElement.canPlayType('application/vnd.apple.mpegurl')){
                 // Fallback for native HLS (iOS/Safari)
-                videoElement.src = url; 
+                videoElement.src = finalUrl; // AB YAHAN finalUrl (PROXY ya Original HTTPS) JAYEGA
                 videoElement.addEventListener('loadedmetadata',()=>videoElement.play().catch(()=>{}));
                 document.getElementById('audioTrackSelection').innerHTML = '<span style="color:#666; font-size:12px;">Native HLS is being used (Audio track selection is unavailable).</span>';
+                // Live Badge ko show karein
+                document.getElementById('liveBadge').style.display = 'block';
+
             } else {
-                alert('Your browser does not support HLS playback.');
-                document.getElementById('audioTrackSelection').innerHTML = '';
+                // UNIVERSAL FALLBACK (Her tarah ke direct link ke liye)
+                videoElement.src = finalUrl; // AB YAHAN finalUrl (PROXY ya Original HTTPS) JAYEGA
+                videoElement.addEventListener('loadedmetadata',()=>videoElement.play().catch(()=>{
+                     document.getElementById('audioTrackSelection').innerHTML = '<span style="color:red; font-size:12px; font-weight:bold;">Error: The stream could not start. Link may be dead or format unsupported.</span>';
+                }));
+                
+                document.getElementById('audioTrackSelection').innerHTML = '<span style="color:#9fb9d6; font-size:12px;">Native/Direct Playback is being used (MP4, MOV, etc.). Audio track options are unavailable.</span>';
+                document.getElementById('liveBadge').style.display = 'none';
             }
         } else {
             alert('Stream URL not found');
             document.getElementById('audioTrackSelection').innerHTML = '';
+            // Live Badge ko chhipa dein
+            document.getElementById('liveBadge').style.display = 'none';
         }
     }
 
@@ -730,23 +902,64 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
 
   <script>
   window.addEventListener("load", ()=>{
-    // Simplified Splash sequence
-    setTimeout(()=>{
-        document.getElementById("splash1").classList.add("hidden");
-        document.getElementById("splash2").classList.remove("hidden");
-    },1500); // Shorter duration
-    setTimeout(()=>{
-        document.getElementById("splash2").classList.add("hidden");
-        document.getElementById("splash3").classList.remove("hidden");
-    },3000); // Shorter duration
-    setTimeout(()=>{
-        document.getElementById("splash3").classList.add("hidden");
-    },4500); // Shorter duration
+    const s1 = document.getElementById("splash1");
+    const s2 = document.getElementById("splash2");
+    const s3 = document.getElementById("splash3");
+    const s4 = document.getElementById("splash4"); // New splash screen
+    const video = document.getElementById("splashVideo"); // Video element
+    const audio = document.getElementById("splashAudio"); // Naya Audio element
+    let splashVideoEnded = false;
+
+    // Purane audio calls hata diye gaye hain
     
-    // Sound sequence
-    document.getElementById("sound1").play().catch(()=>{});
-    setTimeout(()=>{ document.getElementById("sound2").play().catch(()=>{}); },1500);
-    setTimeout(()=>{ document.getElementById("sound3").play().catch(()=>{}); },3000);
+    setTimeout(()=>{
+        s1.classList.add("hidden");
+        s2.classList.remove("hidden");
+    },1500); 
+
+    setTimeout(()=>{
+        s2.classList.add("hidden");
+        s3.classList.remove("hidden");
+    },3000); 
+
+    setTimeout(()=>{
+        s3.classList.add("hidden");
+        s4.classList.remove("hidden"); // Show video splash screen
+        
+        // Agar video successfully chalta hai aur khatam hota hai, to chupa dein.
+        video.onended = () => {
+             s4.classList.add("hidden");
+             splashVideoEnded = true;
+             if (!audio.paused) audio.pause(); // Audio ko bhi rok dein
+        };
+        
+        // --- START VIDEO & SEPARATE AUDIO PLAYBACK ---
+        
+        // 1. Video Playback (Muted karke, taake chalne ki guarantee ho)
+        video.muted = true; 
+        video.play().catch(e => {
+             console.warn("Video playback failed (muted):", e);
+        });
+
+        // 2. Separate Audio Playback (Agar browser ijazat de)
+        audio.play().catch(error => {
+            console.warn("Separate Audio Autoplay failed:", error.name);
+            // Agar audio play nahi hota, to video ko chalne dein.
+        });
+        
+        // --- END VIDEO & AUDIO PLAYBACK ---
+
+        // Fallback safety (maximum time to show the video splash)
+        setTimeout(() => {
+             if(!s4.classList.contains("hidden") && !splashVideoEnded) {
+                 s4.classList.add("hidden");
+                 video.pause(); // Video ko rok dein
+                 if (!audio.paused) audio.pause(); // Audio ko bhi rok dein
+                 console.log("Video splash timeout exceeded. Proceeding to app load.");
+             }
+        }, 12000); 
+
+    },4500); // 4.5 seconds baad splash3 chupa kar splash4 shuru karein
   });
   </script>
 
@@ -789,7 +1002,7 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
     localStorage.setItem(STORAGE_KEY, currentCount);
     document.getElementById("viewCount").innerText = currentCount.toLocaleString();
 
-    // 3. MAGIC THEMES
+    // 3. MAGIC THEMES (UPDATED)
     function setTheme(themeName) {
         const body = document.body;
         const wrap = document.querySelector('.wrap');
@@ -809,9 +1022,19 @@ body.tv-mode .wrap { border: 4px solid #333; border-radius: 20px; box-shadow: in
             body.style.background = "#831843";
             wrap.style.background = "linear-gradient(180deg,#500724 0%,#831843 100%)";
             body.style.color = "#fce7f3";
+        } else if (themeName === 'purple') { // <-- Naya Purple Theme
+            body.style.background = "#1e1b4b";
+            wrap.style.background = "linear-gradient(180deg,#0c0a32 0%,#1e1b4b 100%)";
+            body.style.color = "#e0e7ff";
         } else if (themeName === 'tv') {
             body.classList.add('tv-mode');
+        } else if (themeName === 'retro') { // <-- Naya Retro TV Effect
+            body.classList.add('retro-tv-mode');
         }
+
+        // Active state update
+        document.querySelectorAll('.opt-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelector(`.opt-btn[onclick="setTheme('${themeName}')"]`).classList.add('active');
         
         // Close menu after selection
         toggleMenu();
