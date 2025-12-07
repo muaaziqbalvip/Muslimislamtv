@@ -6,14 +6,18 @@ https://cdn22lhr.tamashaweb.com:8087/jazzauth/SaudiSunnah(NW)-abr/live/vsat-149L
 #EXTINF:-1 tvg-id="Pegam.pk@sd" tvg-logo="https://i.ibb.co/gMhwDPS8/Pegamtv.jpg", Pegam tv
 YOUTUBE:Ww5nLsKGCUU
 #EXTINF:-1 tvg-id="PeaceTVUrdu.ae@SD" tvg-logo="https://i.postimg.cc/cLCfzgqB/peacetvurdu.png" group-title="Religious",Peace TV Urdu (1080p)
-https://muslimislamtv.muaazipbal.workers.dev/PeaceTvUrdu/index.m3u8
+https://ml-pull-dvc-myco.io:2096/PEACETV-URDU/index.m3u8
+#EXTINF:-1 tvg-id="peasetven.pk@SD" tvg-logo="https://myco.io/_next/image?url=https%3A%2F%2Fassets.myco.io%2Fpublic%2Fcompressed%2Fthumbnails%2F20251127%2Fmycolive-33_copy_20-1764254602627.webp&w=750&q=30" group-title="islam",peace tv en
+https://ml-pull-dvc-myco.io:2096/PEACETV-ENG/index.m3u8
 #EXTINF:-1 tvg-id="ptvsport.pk@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/en/e/e4/PTV_Sports.png" group-title="sports",PTV sport
 https://cdn23lhr.tamashaweb.com:8087/jazzauth/PTVSports-abr/live/livesoon/chunks.m3u8
+#EXTINF:-1 tvg-id="geosuper.pk@SD" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGj7f_Wn7L2Uy337D-Ruly7EYpNwIr61kW6DMyeUby5A&s=10" group-title="sports",geosuper
+https://ml-pull-dvc-myco.io:2096/GEO_SUPER/index.m3u8
 #EXTINF:-1 tvg-id="geonews.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/geo-news-live.webp?id=52" group-title="entertainment",GEO NEWS
 https://cdn05khi.tamashaweb.com:8087/jazzauth/geoNews-abr/playlist.m3u8
 #EXTINF:-1 tvg-id="dicovery.pk@SD" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMJ-bU7at-8zBpPb6pgxLFV0Lgm3PdUvpxL2Vu0U9WnQ&s=10" group-title="giography",Discovery Hd
 https://cdn21lhr.tamashaweb.com:8087/jazzauth/DiscoveryHD-abr/live/178M/chunks.m3u8
-#EXTINF:-1 tvg-id="arynews.pk@SD" tvg-logo="https://i.ibb.co/S4fN9821/Arynews.webp" group-title="news",ARY News hd
+#EXTINF:-1 tvg-id="arynews.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/1684242189-logo.webp?id=63" group-title="news",ARY News hd
 https://cdn22lhr.tamashaweb.com:8087/jazzauth/ARYnews-abr/playlist.m3u8
 #EXTINF:-1 tvg-id="arydigital.pk@SD" tvg-logo="https://i.imgur.com/TVP7g03.png" group-title="entertainment",ARY Digital
 https://cdn21lhr.tamashaweb.com:8087/jazzauth/ARYdigital-abr/live/vsat-ary-L/chunks.m3u8
@@ -23,9 +27,9 @@ https://cdn22lhr.tamashaweb.com:8087/jazzauth/Tamasha-Life-HD-abr/live/Tamasha-L
 https://cdn22lhr.tamashaweb.com:8087/jazzauth/PTVNews-abr/live/191M/chunks.m3u8
 #EXTINF:-1 tvg-id="sunnews.pk@SD" tvg-logo="https://yt3.googleusercontent.com/Xo5FczPFEZv9X3hitIF1Zi3DlNLvVc07L6K0Kn5VTJ5swEVcOxV_ZWUBxDxg8dQQOHeU7Ag=s900-c-k-c0x00ffffff-no-rj" group-title="news",Sun News
 https://cdn24lhr.tamashaweb.com:8087/jazzauth/SUN-NEWS-abr/live/187M/chunks.m3u8
-#EXTINF:-1 tvg-id="digitalpak.pk@SD" tvg-logo=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqjecCGWOvjXzYEK6KYS9rvkvDzQDf2A0wXvSVScaWIBPv4133EpR7G1s&s=10" group-title="giography",DIGITAL PAK
+#EXTINF:-1 tvg-id="digitalpak.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/1755087012153.webp?id=24" group-title="giography",DIGITAL PAK
 https://cdn05khi.tamashaweb.com:8087/jazzauth/Digital-pak-abr/live/DP-AI_240p/chunks.m3u8
-#EXTINF:-1 tvg-id="dawnnews.pk@SD" tvg-logo="" group-title="news",DAWN NEWS
+#EXTINF:-1 tvg-id="dawnnews.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/dawn-news-live.webp?id=54" group-title="news",DAWN NEWS
 https://cdn22lhr.tamashaweb.com:8087/jazzauth/DawnNews-abr/live/vsat-130L/chunks.m3u8
 #EXTINF:-1 tvg-id="Ptvhome.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/1750321510303.webp?id=80" group-title="entertainment",PTV HOME
 https://cdn22lhr.tamashaweb.com:8087/jazzauth/PTVHome-abr/live/190M/chunks.m3u8
@@ -33,100 +37,130 @@ https://cdn22lhr.tamashaweb.com:8087/jazzauth/PTVHome-abr/live/190M/chunks.m3u8
 https://cdn24lhr.tamashaweb.com:8087/jazzauth/GeoEntertainment-abr/playlist.m3u8
 #EXTINF:-1 tvg-id="smaatv.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/samaa-tv-live.webp?id=15" group-title="news",Samaa 📰 
 https://cdn24lhr.tamashaweb.com:8087/jazzauth/samaaTV-abr/live/vsat-123L/chunks.m3u8
-#EXTINF:-1 tvg-id="Ptvworld.pk@SD" tvg-logo="" group-title="news",PTV WORLD
+#EXTINF:-1 tvg-id="Ptvworld.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/1750322208140.webp?id=49" group-title="news",PTV WORLD
 https://cdn22lhr.tamashaweb.com:8087/jazzauth/PTVWorld-abr/live/192M/chunks.m3u8
-#EXTINF:-1 tvg-id="CGTN.pk@SD" tvg-logo="" group-title="documentary",CGTN documentary 
+#EXTINF:-1 tvg-id="CGTN.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/1749124897580.webp?id=82" group-title="documentary",CGTN documentary 
 https://cdn23lhr.tamashaweb.com:8087/jazzauth/CgtnDocumentary-abr/live/171M/chunks.m3u8
-#EXTINF:-1 tvg-id="eurosport.pk@SD" tvg-logo="" group-title="sports",Euro Sport
+#EXTINF:-1 tvg-id="eurosport.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/1686912440-logo.webp?id=26" group-title="sports",Euro Sport
 https://cdn22lhr.tamashaweb.com:8087/jazzauth/Eurosport-abr/live/182M/chunks.m3u8?
 #EXTINF:-1 tvg-id="green.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/1702552123-logo.webp?id=75" group-title="entertainment",Green entertainment
 https://cdn22lhr.tamashaweb.com:8087/jazzauth/Green_Entertainment-abr/live/vsat-green-L/chunks.m3u8
 #EXTINF:-1 tvg-id="humtv.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/1738840613135.webp?id=95" group-title="entertainment",Hum tv
 https://cdn21lhr.tamashaweb.com:8087/jazzauth/humTV-abr/live/vsat-humtv-M/chunks.m3u8
-#EXTINF:-1 tvg-id="express.pk@SD" tvg-logo="" group-title="Entertainment",Express entertainment
+#EXTINF:-1 tvg-id="express.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/express-entertainment-live.webp?id=77" group-title="Entertainment",Express entertainment
 https://cdn21lhr.tamashaweb.com:8087/jazzauth/ExpressEntertainment-abr/live/vsat-83L/chunks.m3u8
-#EXTINF:-1 tvg-id="inplus.pk@SD" tvg-logo="" group-title="movies",In plus hd
+#EXTINF:-1 tvg-id="inplus.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/TMSH-1720441424490.webp?id=86" group-title="movies",In plus hd
 https://cdn24lhr.tamashaweb.com:8087/jazzauth/Inplus-abr/live/vsat-151L/chunks.m3u8
 #EXTINF:-1 tvg-id="ptvnational.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/1750322366525.webp?id=46" group-title="",PTV national
 https://cdn21lhr.tamashaweb.com:8087/jazzauth/PTVNational-abr/live/193M/chunks.m3u8
 #EXTINF:-1 tvg-id="hummasalah.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/1738840592660.webp?id=15" group-title="cooking",Hum maslah
 https://cdn24lhr.tamashaweb.com:8087/jazzauth/hummasala-abr/playlist.m3u8
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
+#EXTINF:-1 tvg-id="aajnews.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/aaj-news-live.webp?id=52" group-title="news",Aaj news
 https://cdn22lhr.tamashaweb.com:8087/jazzauth/AajNews-abr/live/vsat-96L/chunks.m3u8
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
+#EXTINF:-1 tvg-id="Aryzindigi.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/ary-zindagi-live-logo.webp?id=59" group-title="entertainment",ARY Zindigi
 https://cdn05khi.tamashaweb.com:8087/jazzauth/ARYzindagi-abr/live/vsat-aryzindagi-L/chunks.m3u8
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
+#EXTINF:-1 tvg-id="aljazeera.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/1706163791-logo.webp?id=10" group-title="news",Al Jazeera
 https://cdn24lhr.tamashaweb.com:8087/jazzauth/AL-Jazeera-abr/playlist.m3u8
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/HUM-Sitaray-Channel-logo.webp?id=80" group-title="",
+#EXTINF:-1 tvg-id="humsitara.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/HUM-Sitaray-Channel-logo.webp?id=80" group-title="entertainmet",Hum sitare
 https://cdn21lhr.tamashaweb.com:8087/jazzauth/HumSitaray-abr/playlist.m3u8
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
+#EXTINF:-1 tvg-id="cnnnews.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/cnn-news-live.webp?id=84" group-title="news",CNN news
 https://cdn21lhr.tamashaweb.com:8087/jazzauth/Livecnn-abr/playlist.m3u8
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
+#EXTINF:-1 tvg-id="neonews.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/neo-tv-live.webp?id=71" group-title="news",Neo newd
 https://cdn05khi.tamashaweb.com:8087/jazzauth/NeoNews-abr/live/vsat-110L/chunks.m3u8
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
+#EXTINF:-1 tvg-id="set entertainment.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/1730720761397.webp?id=85" group-title="entertainment",Set Entertainment 
 https://cdn23lhr.tamashaweb.com:8087/jazzauth/SetEntertainment-abr/live/vsat-setent-L/chunks.m3u8
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
+#EXTINF:-1 tvg-id="aantv.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/1681977574-logo.webp?id=78" group-title="",AAn tv
 https://cdn23lhr.tamashaweb.com:8087/jazzauth/AAN-TV-abr/playlist.m3u8?
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
+#EXTINF:-1 tvg-id="bolnews.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/bol-news-live.webp?id=15" group-title="news",Bol news
 https://cdn24lhr.tamashaweb.com:8087/jazzauth/BolNews-abr/playlist.m3u8
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
+#EXTINF:-1 tvg-id="Minimax.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/1702633459-logo.webp?id=32" group-title="kids",Minimax Hd
 https://cdn21lhr.tamashaweb.com:8087/jazzauth/Minimax-abr/playlist.m3u8
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
+#EXTINF:-1 tvg-id="tvone.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/tv-one-live.webp?id=63" group-title="entertainment",Tv one
 https://cdn22lhr.tamashaweb.com:8087/jazzauth/TVOne-abr/playlist.m3u8
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
+#EXTINF:-1 tvg-id="sunonews.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/1709545345-logo.webp?id=71" group-title="news",Sunu news
 https://cdn23lhr.tamashaweb.com:8087/jazzauth/Suno_News-abr/live/vsat-89L/chunks.m3u8
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
+#EXTINF:-1 tvg-id="gtvnews.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/gtv-new-logo.webp?id=45" group-title="news",Gtv news
 https://cdn22lhr.tamashaweb.com:8087/jazzauth/GTVNews-abr/playlist.m3u8
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
+#EXTINF:-1 tvg-id="Abnnews.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/1686912075-logo.webp?id=36" group-title="news",Abn news
 https://cdn05khi.tamashaweb.com:8087/jazzauth/ABNnews-abr/live/vsat-aurlife-M/chunks.m3u8
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
+#EXTINF:-1 tvg-id="madni.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/madani-channel-live.webp?id=59" group-title="islamic",Madni tv
 https://cdn23lhr.tamashaweb.com:8087/jazzauth/Madni-abr/live/vsat-94L/chunks.m3u8
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
+#EXTINF:-1 tvg-id="gnn.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/gnn-live.webp?id=21" group-title="",Gnn
 https://cdn21lhr.tamashaweb.com:8087/jazzauth/GNN-abr/live/vsat-gnn-L/chunks.m3u8
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
+#EXTINF:-1 tvg-id="Sabtb.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/1686044497-logo.webp?id=19" group-title="entertainment",Sabtv
 https://cdn22lhr.tamashaweb.com:8087/jazzauth/SabTV-abr/live/vsat-146L/chunks.m3u8
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
-https://s2.ideationtec.live/BOL_Entertainment_HD/BOL_Entertainment_HD.m3u8
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/cartoon-network-live.webp?id=10" group-title="",
-https://s3.ideationtec.live/Cartoon_Network/Cartoon_Network.m3u8
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/a-plus-live.webp?id=60" group-title="",
+#EXTINF:-1 tvg-id="bolentertainment.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/bol-entertainment-live.webp?id=16" group-title="entertainment",Bol entertainment
+https://cdn21lhr.tamashaweb.com:8087/jazzauth/BolEntertainment-abr/live/vsat-144L/chunks.m3u8
+#EXTINF:-1 tvg-id="cartoonnetwork.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/cartoon-network-live.webp?id=10" group-title="kids",Cartoon network
+https://cdn22lhr.tamashaweb.com:8087/jazzauth/cartoonnetwork-abr/playlist.m3u8
+#EXTINF:-1 tvg-id="aplus.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/a-plus-live.webp?id=60" group-title="entertainment",A Plus
 https://cdn23lhr.tamashaweb.com:8087/jazzauth/Aplus-abr/live/vsat-112L/chunks.m3u8
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/ltn-family-live.webp?id=63" group-title="",
+#EXTINF:-1 tvg-id="ltnfamily.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/ltn-family-live.webp?id=63" group-title="entertainment",Ltn family
 https://cdn22lhr.tamashaweb.com:8087/jazzauth/LTNFamily-abr/live/vsat-ltntv-L/chunks.m3u8
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
+#EXTINF:-1 tvg-id="Filmazia.pk@SD" tvg-logo="" group-title="movies",Filmazia
 https://s3.ideationtec.live/Film_World/Film_World.m3u8
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
+#EXTINF:-1 tvg-id="A1tv.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/a1-tv-live.webp?id=76" group-title="entertainment",A1 tv
 https://cdn22lhr.tamashaweb.com:8087/jazzauth/A1TV-abr/playlist.m3u8
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/TMSH-1719302840733.webp?id=24" group-title="",
+#EXTINF:-1 tvg-id="animalplanet.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/TMSH-1719302840733.webp?id=24" group-title="giography",Animal palnet
 https://cdn05khi.tamashaweb.com:8087/jazzauth/AnimalPlanet-abr/live/158-3L/chunks.m3u8?
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/discover-pakistan-live-logo.webp?id=37" group-title="",
+#EXTINF:-1 tvg-id="Dicoverpk.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/discover-pakistan-live-logo.webp?id=37" group-title="giography",Dicovery Pakistan
 https://cdn22lhr.tamashaweb.com:8087/jazzauth/DiscoveryPakistan-abr/live/vsat-108L/chunks.m3u8?
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/see-tv-live.webp?id=36" group-title="",
+#EXTINF:-1 tvg-id="seetv.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/see-tv-live.webp?id=36" group-title="entertainment",seetv
 https://cdn24lhr.tamashaweb.com:8087/jazzauth/seeTV-abr/live/vsat-136L/chunks.m3u8
-#EXTINF:-1 tvg-id=".pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/1745518766547.webp?id=71" group-title="",
+#EXTINF:-1 tvg-id="aurlife.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/1745518766547.webp?id=71" group-title="entertainment",Aur life
 https://cdn23lhr.tamashaweb.com:8087/jazzauth/AurLife-abr/live/vsat-365TV-M/chunks.m3u8
-EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
-https://
-EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
-https://
-EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
-https://
-EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
-https://
-EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
-https://
-EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
-https://
-EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
-https://
-EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
-https://
-EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
-https://
-EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
-https://
-EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
-https://
+#EXTINF:-1 tvg-id="premimior.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/1755248383950.webp?id=17" group-title="sport",epl A
+https://cdn02khi-n.tamashaweb.com:8087/jazzauth/EPL-A-abr/live/EPL-banner/chunks.m3u8
+#EXTINF:-1 tvg-id="bbcnews.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/1761652087354.webp?id=49" group-title="news",BBC news
+https://cdn22lhr.tamashaweb.com:8087/jazzauth/BBCNEWS-abr/playlist.m3u8
+#EXTINF:-1 tvg-id="bbclifestyle.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/1761652808195.webp?id=77" group-title="entertainment",BBC LIFESTYLE
+https://cdn21lhr.tamashaweb.com:8087/jazzauth/BBC-Lifestyle-abr/playlist.m3u8
+#EXTINF:-1 tvg-id="bbcearth.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/1761653800346.webp?id=84" group-title="giography",BBC Earth
+https://cdn22lhr.tamashaweb.com:8087/jazzauth/BBC-Earth-abr/playlist.m3u8
+#EXTINF:-1 tvg-id="dicoverscience.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/1761655046093.webp?id=96" group-title="giography", Dicovery 🧪 
+https://cdn23lhr.tamashaweb.com:8087/jazzauth/Discovery-Science-abr/playlist.m3u8
+#EXTINF:-1 tvg-id="bbcfirst.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/1761654477972.webp?id=64" group-title="entertainment",BBC first
+https://cdn23lhr.tamashaweb.com:8087/jazzauth/BBC-First-abr/playlist.m3u8
+#EXTINF:-1 tvg-id="bbccabies.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/1761654252051.webp?id=40" group-title="kuds",BBC cabied
+https://cdn22lhr.tamashaweb.com:8087/jazzauth/BBC-Cbeebies-abr/playlist.m3u8
+#EXTINF:-1 tvg-id="bbcbrit.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/1761654790591.webp?id=11" group-title="giography",BBC bri
+https://cdn22lhr.tamashaweb.com:8087/jazzauth/BBC-Brit-abr/playlist.m3u8
+#EXTINF:-1 tvg-id="travel.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/1761655290963.webp?id=24" group-title="travling",travel
+https://cdn21lhr.tamashaweb.com:8087/jazzauth/Travel-Channel-abr/playlist.m3u8
+EXTINF:-1 tvg-id="humnews.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/HUM-News-Channel-logo.webp?id=98" group-title="news",Hum news
+https://cdn21lhr.tamashaweb.com:8087/jazzauth/humnews-abr/playlist.m3u8
+#EXTINF:-1 tvg-id="dinvetigation.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/1761655526289.webp?id=84" group-title="giography",Dicovery investigation
+https://cdn05khi.tamashaweb.com:8087/jazzauth/Discovery-Investigation-abr/playlist.m3u8
+#EXTINF:-1 tvg-id="dicoveryturbo.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/1761655890951.webp?id=19" group-title="entertainment",Dicovery turbo
+https://cdn22lhr.tamashaweb.com:8087/jazzauth/Discovery-Turbo-abr/playlist.m3u8
+#EXTINF:-1 tvg-id="expresnews.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/express-news-live.webp?id=55" group-title="news",Express news
+https://cdn24lhr.tamashaweb.com:8087/jazzauth/expressnews-abr/playlist.m3u8
+#EXTINF:-1 tvg-id="k21.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/k21-news-live.webp?id=97" group-title="news",k21 news
+https://cdn23lhr.tamashaweb.com:8087/jazzauth/K21-abr/playlist.m3u8
+#EXTINF:-1 tvg-id="apna.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/apna-tv-live.webp?id=92" group-title="entertainment",Apna
+https://cdn23lhr.tamashaweb.com:8087/jazzauth/Apna-abr/playlist.m3u8
+#EXTINF:-1 tvg-id="8xm.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/8xm-live.webp?id=19" group-title="music",8xm music
+https://cdn21lhr.tamashaweb.com:8087/jazzauth/8xm-abr/playlist.m3u8
+#EXTINF:-1 tvg-id="jalwa.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/jalwa-tv-live.webp?id=83" group-title="music",Jalwa
+https://cdn23lhr.tamashaweb.com:8087/jazzauth/jalwa-abr/live/vsat-81L/chunks.m3u8
+#EXTINF:-1 tvg-id="aik.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/AIKNEWS-LOGO.webp?id=77" group-title="news",aik news
+https://cdn05khi.tamashaweb.com:8087/jazzauth/PNN-abr/live/vsat-84L/chunks.m3u8
+#EXTINF:-1 tvg-id="kohinoor.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/kohenoor-tv-live.webp?id=51" group-title="entertainment",kohe noor
+https://cdn23lhr.tamashaweb.com:8087/jazzauth/KohinoorTV-abr/playlist.m3u8
+#EXTINF:-1 tvg-id="cgtn.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/1749124554903.webp?id=71" group-title="entertainment",CGTN hd
+https://cdn22lhr.tamashaweb.com:8087/jazzauth/CgtnHD-abr/playlist.m3u8
+#EXTINF:-1 tvg-id="filmax.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/filmax-live.webp?id=16" group-title="movie",filmac
+https://cdn21lhr.tamashaweb.com:8087/jazzauth/Filmax-abr/live/vsat-filmax-L/chunks.m3u8
+#EXTINF:-1 tvg-id="movione.pk@SD" tvg-logo="https://canvas.tamashaweb.com/jazzlive/uploads/channels/logo/movie-one-live.webp?id=58" group-title="movie",movie one
+https://cdn21lhr.tamashaweb.com:8087/jazzauth/MovieOne-abr/playlist.m3u8
+#EXTINF:-1 tvg-id="hbo3.pk@SD" tvg-logo="https://myco.io/_next/image?url=https%3A%2F%2Fassets.myco.io%2Fpublic%2Fcompressed%2Fthumbnails%2F20251127%2Fmycolive-33_copy_19-1764255542436.webp&w=750&q=30" group-title="movies",HBO 3
+https://ml-pull-dvc-myco.io:2096/HBO_3/index.m3u8
+#EXTINF:-1 tvg-id="hbo2.pk@SD" tvg-logo="https://myco.io/_next/image?url=https%3A%2F%2Fassets.myco.io%2Fpublic%2Fcompressed%2Fthumbnails%2F20251127%2Fmycolive-33_copy_18-1764255416246.webp&w=750&q=30" group-title="movies",HBO 2
+https://ml-pull-dvc-myco.io:2096/HBO_2/index.m3u8
+#EXTINF:-1 tvg-id="mixtv.pk@SD" tvg-logo="https://myco.io/_next/image?url=https%3A%2F%2Fassets.myco.io%2Fpublic%2Fcompressed%2Fthumbnails%2F20251105%2Fmycolive-mix_1jpg-1762353499626.webp&w=750&q=30" group-title="movies",mix tv
+https://ml-pull-hwc.myco.io/MixTV/hls/index.m3u8
+#EXTINF:-1 tvg-id="pbs kids.pk@SD" tvg-logo="https://static.wikia.nocookie.net/elinor-wonders-why/images/d/d9/PBS_Kids_Dash_%25_282009%25_29.png" group-title="kids",pbs kids
+https://us.ml-pull-dvc-myco.io:2096/PBS_KIDS/index.m3u8
 EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
 https://
 EXTINF:-1 tvg-id=".pk@SD" tvg-logo="" group-title="",
